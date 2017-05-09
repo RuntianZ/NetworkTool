@@ -1,0 +1,10 @@
+http://www.pku.edu.cn
+http://www.sina.com.cn
+http://www.126.com
+http://www.baidu.com
+http://news.baidu.com
+file:///D:/test.html
+D:\test.html
+aa
+ss
+http://www.hotmail.com
