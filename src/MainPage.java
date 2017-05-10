@@ -71,11 +71,12 @@ class MainPage extends JFrame {
 	private JButton btnSettings;
 	private JLabel lblNewLabel;
 	private JButton btnWebsite;
-	private StyledDocument doc;
+	private DefaultStyledDocument doc;
 	public static final File fileLinks = new File("links.dat");
 	public static final File fileCodes = new File("codes.dat");
-	private static final File fileSettings = new File("settings.dat");
+	private static final File fileSettings = new File("settings.edt");
 	private static final File fileSave = new File("save.dat");
+	private static final File fileParsed = new File("parsed.dat");
 	private Font font;
 	private ColorLibrary colors;
 	private JButton btnAbout;
@@ -87,6 +88,7 @@ class MainPage extends JFrame {
 	private static final String TEXTPANE_INIT = "\u5355\u51FB\u201C\u9009\u62E9\u7F51\u5740\u201D\u5F00\u59CB\u5DE5\u4F5C";
 	private static final String PARSING = "\u89E3\u6790\u4E2D";
 	private static final String DOWNLOADING = "\u4E0B\u8F7D\u4E2D";
+	private static final String SHOWING = "\u663E\u793A\u4E2D";
 	private static final String SELECT_A_SITE = "\u9009\u62E9\u7F51\u5740";
 	private static final String CLOSE = "\u5173\u95ED";
 	private static final String SHOW_WEBSITE = "\u663E\u793A\u7F51\u9875";
@@ -113,6 +115,7 @@ class MainPage extends JFrame {
 		try {
 			colors = (ColorLibrary) in.readObject();
 			font = (Font) in.readObject();
+			in.close();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -138,7 +141,7 @@ class MainPage extends JFrame {
 		textPane.setBackground(Color.WHITE);
 		textPane.setText(TEXTPANE_INIT);
 		textPane.setEnabled(false);
-		doc = ((JTextPane) textPane).getStyledDocument();
+		doc = null;
 		JScrollPane scrollPane = new JScrollPane(textPane);
 		contentPane.add(scrollPane, BorderLayout.CENTER);
 
@@ -191,7 +194,6 @@ class MainPage extends JFrame {
 									}
 									downloadingLock.lock();
 									afterLoading();
-									System.out.println("Loading Complete.");
 									downloadingLock.unlock();
 								}).start();
 							}
@@ -202,8 +204,7 @@ class MainPage extends JFrame {
 				} else {
 					textPane = new JTextPane();
 					textPane.setEditable(false);
-					System.out.println("Reparsing");
-					reParse();
+					reParse(true);
 					btnWebsite.setText(SHOW_WEBSITE);
 				}
 				JScrollPane jsp = new JScrollPane(textPane);
@@ -302,6 +303,8 @@ class MainPage extends JFrame {
 		}
 
 		private void insertWithColor(String data, Color color, boolean isUnderlined) {
+			if (!isWorking)
+				return;
 			SimpleAttributeSet attr = new SimpleAttributeSet();
 			StyleConstants.setForeground(attr, color);
 			if (isUnderlined)
@@ -367,13 +370,13 @@ class MainPage extends JFrame {
 						if (index < data.length())
 							++index;
 					} else if (flag == 3) {
-						while (index < data.length() && data.charAt(index) != '\'')
+						while (index < data.length() && (data.charAt(index) != '\'' || data.charAt(index - 1) == '\\'))
 							insertWithColor(data.charAt(index++), colors.colorCodeString);
 						insertWithColor('\'');
 						if (index < data.length())
 							++index;
 					} else if (flag == 4) {
-						while (index < data.length() && data.charAt(index) != '\"')
+						while (index < data.length() && (data.charAt(index) != '\"'|| data.charAt(index - 1) == '\\'))
 							insertWithColor(data.charAt(index++), colors.colorCodeString);
 						insertWithColor('\"');
 						if (index < data.length())
@@ -589,9 +592,9 @@ class MainPage extends JFrame {
 								insertWithColor(':', colors.colorComma);
 								isValue = true;
 							} else if (isValue) {
-								insertWithColor(s.charAt(i), colors.colorJsonAttributeValue);
+								insertWithColor(s.charAt(i), colors.colorCSSAttributeValue);
 							} else {
-								insertWithColor(s.charAt(i), colors.colorJsonAttributeName);
+								insertWithColor(s.charAt(i), colors.colorCSSAttributeName);
 							}
 						}
 						insertWithColor("}\n", colors.colorComma);
@@ -607,6 +610,7 @@ class MainPage extends JFrame {
 
 		@Override
 		public void handleStartTag(HTML.Tag t, MutableAttributeSet a, int pos) {
+			int ti = doc.getLength();
 			insertIndents();
 			++indents;
 			insertWithColor("<", colors.colorTagLabel);
@@ -722,7 +726,6 @@ class MainPage extends JFrame {
 		@Override
 		public void handleEndOfLineString(String eol) {
 			isWorking = false;
-			System.out.println("Working end.");
 			try {
 				writerCodes.close();
 				writerLinks.close();
@@ -759,7 +762,7 @@ class MainPage extends JFrame {
 	public void changeFont(Font font) {
 		textPane.setFont(font);
 		this.font = font;
-		updateSettings(null);
+		updateSettings();
 		textPane.updateUI();
 		repaint();
 	}
@@ -798,8 +801,6 @@ class MainPage extends JFrame {
 				e.printStackTrace();
 			}
 			downloadingLock.unlock();
-			if (!b)
-				return;
 			parseThread.start();
 			try {
 				parseThread.join();
@@ -817,6 +818,11 @@ class MainPage extends JFrame {
 				HTMLEditorKit.Parser parser = new ParserDelegator();
 				HTMLHandler handler = new HTMLHandler();
 				parser.parse(new FileReader(fileSave), handler, true);
+				ObjectOutputStream fout = new ObjectOutputStream(new FileOutputStream(fileParsed));
+				fout.writeObject(doc);
+				fout.close();
+				if (!b)
+					return;
 				displayThread.start();
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -828,11 +834,12 @@ class MainPage extends JFrame {
 
 		displayThread = new Thread(() -> {
 			downloadingLock.lock();
+			lblDownload.setText(SHOWING);
 			try {
 				ObjectInputStream fin = new ObjectInputStream(new FileInputStream(fileSettings));
 				colors = (ColorLibrary) fin.readObject();
 				font = (Font) fin.readObject();
-				fin.close();
+				fin.close();	
 				SwingUtilities.invokeLater(() -> {
 					textPane.setBackground(colors.colorBackground);
 					textPane.setFont(font);
@@ -858,40 +865,43 @@ class MainPage extends JFrame {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Download Complete.");
 	}
 
 	public void updateSettings(ColorLibrary thecolors) {
 		if (thecolors != null)
 			colors = thecolors.clone();
-		try {
-			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileSettings));
-			out.writeObject(colors);
-			out.writeObject(font);
-			out.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		saveSettings(fileSettings);
 	}
-
+	
+	public void updateSettings() {
+		saveSettings(fileSettings);
+	}
+	
 	public void colorChanged(ColorLibrary thecolors) {
 		updateSettings(thecolors);
-		if (btnWebsite.getText().equals(SHOW_WEBSITE))
-			reParse();
+		if (btnWebsite.getText().equals(SHOW_WEBSITE) && btnWebsite.isEnabled())
+			reParse(false);
 	}
 
-	private void reParse() {
+	private void reParse(boolean b) {
 		loading();
 		parseThread = new Thread(() -> {
 			workingLock.lock();
 			lblDownload.setText(PARSING);
 			try {
-				doc = new DefaultStyledDocument();
-				HTMLEditorKit.Parser parser = new ParserDelegator();
-				HTMLHandler handler = new HTMLHandler();
-				parser.parse(new FileReader(fileSave), handler, true);
+				if (b) {
+					ObjectInputStream fin = new ObjectInputStream(new FileInputStream(fileParsed));
+					doc = (DefaultStyledDocument)(fin.readObject());
+					fin.close();
+				} else {
+					doc = new DefaultStyledDocument();
+					HTMLEditorKit.Parser parser = new ParserDelegator();
+					HTMLHandler handler = new HTMLHandler();
+					parser.parse(new FileReader(fileSave), handler, true);
+					ObjectOutputStream fout = new ObjectOutputStream(new FileOutputStream(fileParsed));
+					fout.writeObject(doc);
+					fout.close();
+				}
 				displayThread.start();
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -903,6 +913,7 @@ class MainPage extends JFrame {
 
 		displayThread = new Thread(() -> {
 			workingLock.lock();
+			lblDownload.setText(SHOWING);
 			try {
 				ObjectInputStream fin = new ObjectInputStream(new FileInputStream(fileSettings));
 				colors = (ColorLibrary) fin.readObject();
@@ -977,6 +988,7 @@ class MainPage extends JFrame {
 			contentPane.removeAll();
 			contentPane.add(panel, BorderLayout.EAST);
 			textPane = new JTextPane();
+			textPane.setEditable(false);
 			JScrollPane jsp = new JScrollPane(textPane);
 			contentPane.add(jsp, BorderLayout.CENTER);
 			textPane.setText(TEXTPANE_INIT);
@@ -990,6 +1002,19 @@ class MainPage extends JFrame {
 			lblDownload.setVisible(false);
 			doc = null;
 		});
+	}
+	
+	public void saveSettings(File file) {
+		try {
+			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+			out.writeObject(colors);
+			out.writeObject(font);
+			out.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private void downloadFailed() {

@@ -4,6 +4,7 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
@@ -36,6 +37,11 @@ class URLChooseDialog extends JDialog {
 	private JTextField textField;
 	private JList<String> list;
 	private final File file = new File("history.txt");
+	private JButton btnEdit;
+	private static final String EDIT = "\u7F16\u8F91";
+	private static final String CLOSE = "\u5173\u95ED";
+	private JButton okButton;
+	private JButton btnDelete;
 
 	/**
 	 * Create the dialog.
@@ -45,7 +51,6 @@ class URLChooseDialog extends JDialog {
 		setResizable(false);
 		setTitle("\u9009\u62E9\u7F51\u5740");
 		setSize(536, 433);
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		{
 			int x = Main.mainPage.getX() + Main.mainPage.getWidth() / 2 - 268;
@@ -53,13 +58,14 @@ class URLChooseDialog extends JDialog {
 				x = 50;
 			if (x > toolkit.getScreenSize().getWidth() - 586)
 				x = (int) (toolkit.getScreenSize().getWidth() - 586);
-			int y = Main.mainPage.getY() + Main.mainPage.getHeight() / 2 - 215;
+			int y = Main.mainPage.getY() + Main.mainPage.getHeight() / 2 - 216;
 			if (y < 50)
 				y = 50;
 			if (y > toolkit.getScreenSize().getHeight() - 483)
 				y = (int) (toolkit.getScreenSize().getHeight() - 483);
 			setLocation(x, y);
 		}
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -83,11 +89,43 @@ class URLChooseDialog extends JDialog {
 		{
 			JPanel panel = new JPanel();
 			contentPanel.add(panel, BorderLayout.CENTER);
-			panel.setLayout(new BorderLayout(0, 0));
+			panel.setLayout(new BorderLayout());
 			{
+				JPanel panel_new = new JPanel(new BorderLayout());
 				JLabel lblNewLabel_1 = new JLabel("\u8FD1\u671F\u67E5\u770B\u8FC7\u7684URL\uFF1A");
 				lblNewLabel_1.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 18));
-				panel.add(lblNewLabel_1, BorderLayout.NORTH);
+				panel_new.add(lblNewLabel_1, BorderLayout.WEST);
+				btnEdit = new JButton(EDIT);
+				btnEdit.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						if (btnEdit.getText().equals(EDIT)) {
+							btnEdit.setText(CLOSE);
+							textField.setEnabled(false);
+							btnDelete.setVisible(true);
+							okButton.setEnabled(false);
+						} else {
+							btnEdit.setText(EDIT);
+							textField.setEnabled(true);
+							btnDelete.setVisible(false);
+							okButton.setEnabled(true);
+							textField.setText(list.getSelectedValue());
+						}
+					}
+				});
+				JPanel panel_btn = new JPanel(new FlowLayout());
+				btnDelete = new JButton("\u5220\u9664");
+				btnDelete.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						String s = list.getSelectedValue();
+						updateVec(vec, s, false);
+						list.setListData(vec);
+					}
+				});
+				btnDelete.setVisible(false);
+				panel_btn.add(btnDelete);
+				panel_btn.add(btnEdit);
+				panel_new.add(panel_btn, BorderLayout.EAST);
+				panel.add(panel_new, BorderLayout.NORTH);
 			}
 			{
 				BufferedReader reader = null;
@@ -104,18 +142,15 @@ class URLChooseDialog extends JDialog {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						new Thread( () -> {
-							if (e.getClickCount() >= 2) {
+							if (e.getClickCount() >= 1) {
 								String st = list.getSelectedValue();
-								boolean p = false;
 								if (st != null) {
 									String sst = textField.getText();
-									if (st.equals(sst))
-										p = true;
 									textField.setText(st);
 								}
-								if(e.getClickCount() >= 3 || p) {
+								if(e.getClickCount() >= 2) {
 									dispose();
-									updateVec(vec, st);
+									updateVec(vec, st, true);
 									Main.mainPage.start(st);
 								}
 							}
@@ -132,14 +167,14 @@ class URLChooseDialog extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("\u786E\u5B9A");
+				okButton = new JButton("\u786E\u5B9A");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						String ss = textField.getText();
 						if (ss == null || ss.equals(""))
 							return;
 						dispose();
-						updateVec(vec, ss);
+						updateVec(vec, ss, true);
 						Main.mainPage.start(ss);
 					}
 				});
@@ -160,7 +195,7 @@ class URLChooseDialog extends JDialog {
 		}
 	}
 	
-	private void updateVec(Vector<String> vec, String s) {
+	private void updateVec(Vector<String> vec, String s, boolean b) {
 		vec.removeIf(new Predicate<String>() {
 			@Override
 			public boolean test(String arg0) {
@@ -171,7 +206,8 @@ class URLChooseDialog extends JDialog {
 		});
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-			writer.write(s + "\n");
+			if(b)
+				writer.write(s + "\n");
 			for (String st : vec)
 				writer.write(st + "\n");
 			writer.close();

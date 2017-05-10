@@ -30,13 +30,15 @@ class CodeColorChooser extends SynchronizedPanel {
 	private JButton btnApply;
 	private JPanel valuePanel;
 	private JList<ColorPackage> list;
+	private boolean isEdited;
+	private JLabel lblSave;
 
 	/**
 	 * Create the panel.
 	 */
 	public CodeColorChooser(ColorLibrary thecolors) {
 		colors = thecolors.clone();
-		
+		valuePanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		setSize(450, 425);
 		setLayout(new BorderLayout(0, 0));
 		
@@ -47,9 +49,9 @@ class CodeColorChooser extends SynchronizedPanel {
 		add(btnPanel, BorderLayout.SOUTH);
 		panel.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		
-		JLabel label = new JLabel("\u5355\u51FB\u5E94\u7528\u4FDD\u5B58\u8BBE\u7F6E");
-		label.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 16));
-		panel.add(label);
+		lblSave = new JLabel("\u5355\u51FB\u5E94\u7528\u4FDD\u5B58\u8BBE\u7F6E");
+		lblSave.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 16));
+		panel.add(lblSave);
 		
 		btnApply = new JButton("\u5E94\u7528");
 		btnApply.addActionListener(new ActionListener() {
@@ -65,7 +67,9 @@ class CodeColorChooser extends SynchronizedPanel {
 					Main.mainPage.workingLock.lock();
 					buttonUnlock();
 					Main.mainPage.workingLock.unlock();
-				}).start();
+				}).start();	
+				isEdited = false;
+				lblSave.setVisible(false);
 			}
 		});
 		btnApply.setEnabled(false);
@@ -86,13 +90,14 @@ class CodeColorChooser extends SynchronizedPanel {
 			leftPanel.add(lbl, BorderLayout.NORTH);
 		}
 		Vector<ColorPackage> vec = new Vector<>();
-		vec.add(new ColorPackage("±³¾°") {
+		ColorPackage initPackage = new ColorPackage("±³¾°") {
 			@Override
 			public void run() {
 				Color color = JColorChooser.showDialog(null, "Ñ¡ÔñÑÕÉ«", colors.colorBackground); 
-				if (color != null)
+				if (color != null) {
 					colors.colorBackground = color;
-				updatePane();
+					updatePane();
+				}
 			}
 
 			@Override
@@ -103,14 +108,16 @@ class CodeColorChooser extends SynchronizedPanel {
 				lbl.setOpaque(true);
 				return lbl;
 			}
-		});
+		};
+		vec.add(initPackage);
 		vec.add(new ColorPackage("ÍøÒ³ÄÚÈÝ") {
 			@Override
 			public void run() {
 				Color color = JColorChooser.showDialog(null, "Ñ¡ÔñÑÕÉ«", colors.colorContent);
-				if (color != null)
+				if (color != null) {
 					colors.colorContent = color;
-				updatePane();
+					updatePane();
+				}
 			}
 			
 			@Override
@@ -150,9 +157,10 @@ class CodeColorChooser extends SynchronizedPanel {
 			@Override
 			public void run() {
 				Color color = JColorChooser.showDialog(null, "Ñ¡ÔñÑÕÉ«", colors.colorTag); 
-				if (color != null)
+				if (color != null) {
 					colors.colorTag = color;
-				updatePane();
+					updatePane();
+				}
 			}
 			
 			@Override
@@ -168,9 +176,10 @@ class CodeColorChooser extends SynchronizedPanel {
 			@Override
 			public void run() {
 				Color color = JColorChooser.showDialog(null, "Ñ¡ÔñÑÕÉ«", colors.colorTagLabel);
-				if (color != null)
+				if (color != null) {
 					colors.colorTagLabel = color;
-				updatePane();
+					updatePane();
+				}
 			}
 			
 			@Override
@@ -186,9 +195,10 @@ class CodeColorChooser extends SynchronizedPanel {
 			@Override
 			public void run() {
 				Color color = JColorChooser.showDialog(null, "Ñ¡ÔñÑÕÉ«", colors.colorAttributeName); 
-				if (color != null)
+				if (color != null) {
 					colors.colorAttributeName = color;
-				updatePane();
+					updatePane();
+				}
 			}
 			
 			@Override
@@ -204,9 +214,10 @@ class CodeColorChooser extends SynchronizedPanel {
 			@Override
 			public void run() {
 				Color color = JColorChooser.showDialog(null, "Ñ¡ÔñÑÕÉ«", colors.colorAttributeValue); 
-				if (color != null)
+				if (color != null) {
 					colors.colorAttributeValue = color;
-				updatePane();
+					updatePane();
+				}
 			}
 			
 			@Override
@@ -222,9 +233,10 @@ class CodeColorChooser extends SynchronizedPanel {
 			@Override
 			public void run() {
 				Color color = JColorChooser.showDialog(null, "Ñ¡ÔñÑÕÉ«", colors.colorLink); 
-				if (color != null)
+				if (color != null) {
 					colors.colorLink = color;
-				updatePane();
+					updatePane();
+				}
 			}
 			
 			@Override
@@ -240,9 +252,10 @@ class CodeColorChooser extends SynchronizedPanel {
 			@Override
 			public void run() {
 				Color color = JColorChooser.showDialog(null, "Ñ¡ÔñÑÕÉ«", colors.colorComment); 
-				if (color != null)
+				if (color != null) {
 					colors.colorComment = color;
-				updatePane();
+					updatePane();
+				}
 			}
 			
 			@Override
@@ -258,9 +271,10 @@ class CodeColorChooser extends SynchronizedPanel {
 			@Override
 			public void run() {
 				Color color = JColorChooser.showDialog(null, "Ñ¡ÔñÑÕÉ«", colors.colorCSSVariable); 
-				if (color != null)
+				if (color != null) {
 					colors.colorCSSVariable = color;
-				updatePane();
+					updatePane();
+				}
 			}
 			
 			@Override
@@ -276,9 +290,10 @@ class CodeColorChooser extends SynchronizedPanel {
 			@Override
 			public void run() {
 				Color color = JColorChooser.showDialog(null, "Ñ¡ÔñÑÕÉ«", colors.colorJsonAttributeName); 
-				if (color != null)
+				if (color != null) {
 					colors.colorJsonAttributeName = color;
-				updatePane();
+					updatePane();
+				}
 			}
 			
 			@Override
@@ -294,9 +309,10 @@ class CodeColorChooser extends SynchronizedPanel {
 			@Override
 			public void run() {
 				Color color = JColorChooser.showDialog(null, "Ñ¡ÔñÑÕÉ«", colors.colorJsonAttributeValue); 
-				if (color != null)
+				if (color != null) {
 					colors.colorJsonAttributeValue = color;
-				updatePane();
+					updatePane();
+				}
 			}
 			
 			@Override
@@ -312,9 +328,10 @@ class CodeColorChooser extends SynchronizedPanel {
 			@Override
 			public void run() {
 				Color color = JColorChooser.showDialog(null, "Ñ¡ÔñÑÕÉ«", colors.colorCSSAttributeName); 
-				if (color != null)
+				if (color != null) {
 					colors.colorCSSAttributeName = color;
-				updatePane();
+					updatePane();
+				}
 			}
 			
 			@Override
@@ -330,9 +347,10 @@ class CodeColorChooser extends SynchronizedPanel {
 			@Override
 			public void run() {
 				Color color = JColorChooser.showDialog(null, "Ñ¡ÔñÑÕÉ«", colors.colorCSSAttributeValue); 
-				if (color != null)
+				if (color != null) {
 					colors.colorCSSAttributeValue = color;
-				updatePane();
+					updatePane();
+				}
 			}
 			
 			@Override
@@ -348,9 +366,10 @@ class CodeColorChooser extends SynchronizedPanel {
 			@Override
 			public void run() {
 				Color color = JColorChooser.showDialog(null, "Ñ¡ÔñÑÕÉ«", colors.colorCodeRetain); 
-				if (color != null)
+				if (color != null) {
 					colors.colorCodeRetain = color;
-				updatePane();
+					updatePane();
+				}
 			}
 			
 			@Override
@@ -366,9 +385,10 @@ class CodeColorChooser extends SynchronizedPanel {
 			@Override
 			public void run() {
 				Color color = JColorChooser.showDialog(null, "Ñ¡ÔñÑÕÉ«", colors.colorCodeVariable); 
-				if (color != null)
+				if (color != null) {
 					colors.colorCodeVariable = color;
-				updatePane();
+					updatePane();
+				}
 			}
 			
 			@Override
@@ -384,9 +404,10 @@ class CodeColorChooser extends SynchronizedPanel {
 			@Override
 			public void run() {
 				Color color = JColorChooser.showDialog(null, "Ñ¡ÔñÑÕÉ«", colors.colorCodeFunction); 
-				if (color != null)
+				if (color != null) {
 					colors.colorCodeFunction = color;
-				updatePane();
+					updatePane();
+				}
 			}
 			
 			@Override
@@ -402,9 +423,10 @@ class CodeColorChooser extends SynchronizedPanel {
 			@Override
 			public void run() {
 				Color color = JColorChooser.showDialog(null, "Ñ¡ÔñÑÕÉ«", colors.colorCodeString); 
-				if (color != null)
+				if (color != null) {
 					colors.colorCodeString = color;
-				updatePane();
+					updatePane();
+				}
 			}
 			
 			@Override
@@ -420,9 +442,10 @@ class CodeColorChooser extends SynchronizedPanel {
 			@Override
 			public void run() {
 				Color color = JColorChooser.showDialog(null, "Ñ¡ÔñÑÕÉ«", colors.colorComma); 
-				if (color != null)
+				if (color != null) {
 					colors.colorComma = color;
-				updatePane();
+					updatePane();
+				}
 			}
 			
 			@Override
@@ -438,9 +461,10 @@ class CodeColorChooser extends SynchronizedPanel {
 			@Override
 			public void run() {
 				Color color = JColorChooser.showDialog(null, "Ñ¡ÔñÑÕÉ«", colors.colorCSSComment); 
-				if (color != null)
+				if (color != null) {
 					colors.colorCSSComment = color;
-				updatePane();
+					updatePane();
+				}
 			}
 			
 			@Override
@@ -456,6 +480,7 @@ class CodeColorChooser extends SynchronizedPanel {
 		list.addListSelectionListener(e -> {
 			updateValuePanel();
 		});
+		list.setSelectedValue(initPackage, true);
 		list.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 16));
 		JScrollPane scr = new JScrollPane(list);
 		scr.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -475,7 +500,6 @@ class CodeColorChooser extends SynchronizedPanel {
 		lbl_0_1.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 15));
 		lbl_0_1.setBorder(new EmptyBorder(5, 0, 5, 0));
 		panel_0.add(lbl_0_1, BorderLayout.WEST);
-		valuePanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		panel_0.add(valuePanel, BorderLayout.CENTER);
 		leftPanel.add(panel_0, BorderLayout.SOUTH);
 		
@@ -493,6 +517,8 @@ class CodeColorChooser extends SynchronizedPanel {
 		panel_2.add(textPane, BorderLayout.CENTER);
 		
 		updatePane();
+		isEdited = false;
+		lblSave.setVisible(false);
 	}
 	
 	private abstract class ColorPackage implements Runnable {
@@ -516,6 +542,7 @@ class CodeColorChooser extends SynchronizedPanel {
 		} catch (BadLocationException e) {
 			e.printStackTrace();
 		}  
+		isEdited = true;
 		textPane.setBackground(colors.colorBackground);
 		insertWithColor("<!--ÍøÒ³×¢ÊÍ-->", colors.colorComment);
 		insertWithColor("\n");
@@ -602,6 +629,7 @@ class CodeColorChooser extends SynchronizedPanel {
 		textPane.setDocument(doc);
 		textPane.updateUI();
 		updateValuePanel();
+		lblSave.setVisible(true);
 		repaint();
 	}
 	
@@ -651,5 +679,14 @@ class CodeColorChooser extends SynchronizedPanel {
 	@Override
 	public void buttonUnlock() {
 		btnApply.setEnabled(true);
+	}
+	
+	public void setColors(ColorLibrary thecolors) {
+		colors = thecolors.clone();
+		updatePane();
+	}
+	
+	public boolean isEdited() {
+		return isEdited;
 	}
 }

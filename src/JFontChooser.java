@@ -40,6 +40,7 @@ class JFontChooser extends SynchronizedPanel {
 	private String current_fontName;
 	private int current_fontStyle;
 	private int current_fontSize;
+	private JLabel lblSave;
 
 	public JFontChooser() {
 		this.selectedfont = null;
@@ -115,6 +116,7 @@ class JFontChooser extends SynchronizedPanel {
 				current_fontName = (String) lstFont.getSelectedValue();
 				txtFont.setText(current_fontName);
 				showTF.setFont(new Font(current_fontName, current_fontStyle, current_fontSize));
+				lblSave.setVisible(true);
 			}
 		});
 
@@ -153,6 +155,7 @@ class JFontChooser extends SynchronizedPanel {
 				}
 				txtStyle.setText(value);
 				showTF.setFont(new Font(current_fontName, current_fontStyle, current_fontSize));
+				lblSave.setVisible(true);
 			}
 		});
 
@@ -164,10 +167,11 @@ class JFontChooser extends SynchronizedPanel {
 
 		ok = new JButton("应用");
 		{
-			JLabel lbl = new JLabel("单击应用保存设置");
-			lbl.setFont(new Font("微软雅黑", Font.PLAIN, 16));
+			lblSave = new JLabel("单击应用保存设置");
+			lblSave.setFont(new Font("微软雅黑", Font.PLAIN, 16));
+			lblSave.setVisible(false);
 			JPanel _panel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-			_panel.add(lbl);
+			_panel.add(lblSave);
 			_panel.add(ok);
 			add(_panel, BorderLayout.SOUTH);
 		}
@@ -181,6 +185,7 @@ class JFontChooser extends SynchronizedPanel {
 			public void actionPerformed(ActionEvent e) {
 				setSelectedfont(new Font(current_fontName, current_fontStyle, current_fontSize));
 				Main.mainPage.changeFont(selectedfont);
+				lblSave.setVisible(false);
 			}
 		});
 
@@ -189,6 +194,7 @@ class JFontChooser extends SynchronizedPanel {
 				current_fontSize = (Integer) sizeMap.get(lstSize.getSelectedValue());
 				txtSize.setText((String)lstSize.getSelectedValue());
 				showTF.setFont(new Font(current_fontName, current_fontStyle, current_fontSize));
+				lblSave.setVisible(true);
 			}
 		});
 
