@@ -1,305 +1,408 @@
-哔哩哔哩 (�?-�?)つロ 干杯~-bilibili
+北京大学
+ <script src="js/index.js"type="text/javascript"></script> 
 
 
 
 
 
+[if lt IE 9]>
+	<script src="files/html5.js" type="text/javascript"></script>
+	<script src="files/response.min.js"></script>
+	<link href="files/mmenu2.css" rel="stylesheet" type="text/css">
+	<![endif]
 
-body { min-height: 1500px; } 
- 2017-05-26 22:21:22 
-biliAdjust();
-            $(function () {
-                biliAdjust(true);
-                $(window).resize(biliAdjust);
-            });
-<div id="httpsNotWorkTips">
-    <text style="font-family: 'PingFang SC'; font-size: 16px; font-variant-ligatures: normal; orphans: 2; widows: 2; color: red;">访问异常�?</text><span style="font-family: 'PingFang SC'; font-size: medium; font-variant-ligatures: normal; orphans: 2; widows: 2;">&nbsp;</span><a style="font-family: 'PingFang SC'; font-size: medium; font-variant-ligatures: normal; orphans: 2; widows: 2; color: blue;" target="_blank" href="http://www.bilibili.com/html/diagnostics.html">【点击这里�??</a><span style="font-family: 'PingFang SC'; font-size: medium; font-variant-ligatures: normal; orphans: 2; widows: 2;">&nbsp;</span><text style="font-family: 'PingFang SC'; font-size: 16px; font-variant-ligatures: normal; orphans: 2; widows: 2; color: red;">请将的诊断结果与系统环境、正在使用的浏览器信息发送给我们，邮箱：bug@bilibili.com，或进入</text><span style="font-family: 'PingFang SC'; font-size: medium; font-variant-ligatures: normal; orphans: 2; widows: 2;">&nbsp;</span><a style="font-family: 'PingFang SC'; font-size: medium; font-variant-ligatures: normal; orphans: 2; widows: 2; color: blue;" target="_blank" href="http://link.acg.tv">【用户反馈论坛�??</a><span style="font-family: 'PingFang SC'; font-size: medium; font-variant-ligatures: normal; orphans: 2; widows: 2;">&nbsp;</span><text style="font-family: 'PingFang SC'; font-size: 16px; font-variant-ligatures: normal; orphans: 2; widows: 2; color: red;">反映�?</text><span style=" font-size:12pt;font-family:DengXian ;;;"><br></span>
-</div>
-主站
-画友
-游戏中心
-直播
-周边
-BML
-移动�?
-个人中心
-投稿管理
-B币钱�?
-直播中心
-�?�?
-成为大会�?
-消息
-动�??
-收藏�?
-登录
-注册
-历史
-�? �?
-视频投稿
-投稿管理
-创作中心
-首页
- 动画 
-动画
---
-MAD·AMV
-MMD·3D
-短片·手书·配音
-综合
- 番剧 
-番剧
---
-连载动画
-完结动画
-资讯
-官方延伸
-新番时间�?
-番剧索引
- 国创 
-国创
---
-国产动画
-国产原创相关
-布袋�?
-资讯
-新番时间�?
-国产动画索引
- 音乐 
-音乐
---
-原创音乐
-翻唱
-VOCALOID·UTAU
-演奏
-三次元音�?
-OP/ED/OST
-音乐选集
- 舞蹈 
-舞蹈
---
-宅舞
-三次元舞�?
-舞蹈教程
- 游戏 
-游戏
---
-单机游戏
-电子竞技
-手机游戏
-网络游戏
-桌游棋牌
-GMV
-音游
-Mugen
- 科技 
-科技
---
-纪录�?
-趣味科普人文
-野生�?术协�?
-演讲·公开�?
-星海
-数码
-机械
- 生活 
-生活
---
-搞笑
-日常
-美食�?
-动物�?
-手工
-绘画
-运动
-其他
- 鬼畜 
-鬼畜
---
-鬼畜调教
-音MAD
-人力VOCALOID
-教程演示
- 时尚 
-时尚
---
-美妆
-服饰
-健身
-资讯
- 广告 
-广告
---
- 娱乐 
-娱乐
---
-综艺
-明星
-Korea相关
- 影视 
-影视
---
-电影
-电视�?
-广场
-活动中心
-游戏中心
-新闻中心
-画友
-芒果TV
-直播
-推荐主播
-生活娱乐
-绘画专区
-唱见舞见
-御宅文化
-单机联机
-网络游戏
-电子竞技
-手游直播
-放映�?
-小黑�?
-排行�?
-[if lt IE 7]>
-<script type="text/javascript" language="JavaScript">
-window.location="/newlist.html";
-</script>
-<![endif]
-var pageLoadStart = (new Date()).getTime();
-顶部
-新作推广
-在线人数�?
-979747
-�?新投稿：
---
-window.indexNav = new IndexNavigator({
-                sortable: true,
-                nav: {
-                    douga: {
-                        name: "动画",
-                        target: "#b_douga"
-                    },
-                    bangumi: {
-                        name: "番剧",
-                        target: "#b_bangumi"
-                    },
-                    guochuang: {
-                        name: "国创",
-                        target: "#b_guochuang"
-                    },
-                    music: {
-                        name: "音乐",
-                        target: "#b_music"
-                    },
-                    dance: {
-                        name: "舞蹈",
-                        target: "#b_dance"
-                    },
-                    game: {
-                        name: "游戏",
-                        target: "#b_game"
-                    },
-                    technology: {
-                        name: "科技",
-                        target: "#b_technology"
-                    },
-                    life: {
-                        name: "生活",
-                        target: "#b_life"
-                    },
-                    kichiku: {
-                        name: "鬼畜",
-                        target: "#b_kichiku"
-                    },
-                    fashion: {
-                        name: "时尚",
-                        target: "#b_fashion"
-                    },
-                    "ad-ad-1": {
-                        name: "广告",
-                        target: "#b_ad"
-                    },
-                    ent: {
-                        name: "娱乐",
-                        target: "#b_ent"
-                    },
-                    movie: {
-                        name: "电影",
-                        target: "#b_movie"
-                    },
-                    teleplay: {
-                        name: "TV�?",
-                        target: "#b_teleplay"
-                    }
-                }
-            });
 
-            ModuleManage.load(indexBlock, {container: "#index_container", nav: indexNav});
-            indexNav.loadSetting();
-bilibili
-关于我们
-友情链接
-哔哩哔哩周边
-联系我们
-加入我们
-官方认证
-传�?�门
-帮助中心
-高级弹幕
-活动专题�?
-侵权申诉
-分院帽计�?
-活动中心
-用户反馈论坛
-壁纸�?
-名人�?
-手机端下�?
-新浪微博
-官方微信
-广播电视节目制作经营许可证：
-（沪）字�?1248�? 
-| 网络文化经营许可证：
-沪网文[2013]0480-056�?
- | 信息网络传播视听节目许可证：
-0910417
- | 互联网ICP备案�?
-沪ICP�?13002172�?-3
- 沪ICP证：
-沪B2-20100043
- | 违法不良信息举报邮箱：help@bilibili.com | 违法不良信息举报电话�?4000233233�?3
-网上有害信息举报专区�?
- 中国互联网违法和不良信息举报中心
- | 
-上海互联网举报中�?
- | 
-12318 全国文化市场举报网站
-沪公网安�? 31011502001911�?
-loadLoginStatus();
+ section class="ssubNav">子导�?</section 
+<img id="subNavlogo" src="images/mnav.png" style="width:22px;height:17px;padding-bottom:6px;">
+学生
+教职�?
+校友
+家长
+访客
+招聘
+捐赠
+门户
+网络
+邮箱
+BBS
+图书�?
+医学�?
+领导信箱
+120周年校庆
+English
+go
+ for mobile [begin] 
+北大概况
+学生
+门户
+招生与资�?
+教职�?
+网络
+院系设置
+校友
+邮箱
+教育教学
+家长
+BBS
+科学研究
+访客
+图书�?
+合作交流
+招聘
+医学�?
+校园生活
+捐赠
+领导信箱
+?
+?
+120周年校庆
+English
+  for mobile [end] 
+导航
+北大概况
+北大是常为新的，
+改进的运动的先锋�?
+要使中国向着好的�?
+�?上的道路走�??
+北大�?�?
+现任领导
+历任领导
+组织机构
+历史名人
+信息公开
+绿色校园
+招生与资�?
+燕园画卷美不胜收�?
+恰似你将要留在这里的青春年华�?
+北京大学欢迎你！
+本科�?
+研究�?
+留学�?
+继续教育
+本科生奖�?
+研究生奖�?
+学生资助中心
+暑期学校
+国际暑期学校
+院系设置
+勤奋、严谨�?�求实�?�创新�??
+理学�?
+信息与工程科学部
+深圳研究生院
+人文学部
+社会科学学部
+经济与管理学�?
+医学�?
+跨学科类
+教育教学
+思想自由、兼容并包�??
+教育应指导社会，而非追�?�社会�??
+师资队伍
+本科生教�?
+研究生教�?
+留学生教�?
+继续教育
+课程设置
+海外学习
+小班课教�?
+本科全英文授�?
+课表查询
+慕课
+教学�?
+公开�?
+证书验证
+科学研究
+博学之，审问之，
+慎�?�之，明辨之，笃行之�?
+自然科学
+人文社科
+产学�?
+科研成果
+科研机构
+学术期刊
+管理部门
+合作交流
+志于道，据于德，
+依于仁，游于艺�??
+合作概览
+内地合作
+国际交流
+港澳台交�?
+孔子学院
+校园生活
+秋冬春夏�?
+伴随�?四时的运行，
+青春和燕园融为一体，
+北大成为永恒�?
+艺术与文�?
+体育与健�?
+学生社团
+教工社团
+志愿公益
+校史档案
+会议讲座
+电影演出
+管理服务
+后勤服务
+观光访问
+校历
 
-$(function () {
-        $.ajax({url: '//data.bilibili.com/rec.js', cache: true, dataType: 'script'});
-        $('<scr' + 'ipt type="text/javascript" src="//static.hdslb.com/js/bfd.js" charset="UTF-8"></scri' + 'pt>').appendTo('body');
-//        $('<scr' + 'ipt type="text/javascript" src="//s11.cnzz.com/stat.php?id=2724999&web_id=2724999" charset="UTF-8"></scri' + 'pt>').appendTo('body');
-        $('<scr' + 'ipt type="text/javascript" src="//tajs.qq.com/stats?sId=9156259" charset="UTF-8"></scri' + 'pt>').appendTo('body');
+<div id="header_placeholder"></div>
+
+var _filename_ = location.pathname.match(/[^\/]+$/);
+
+ 	if (_filename_ != null && _filename_.length == 1)
+	{
+		var _id_ = _filename_[0].match(/^[^_\.]+/);
+
+		if (_id_ != null && _id_.length > 0)
+		{
+			$("#" + _id_).addClass("current");
+		}
+	}
+$(function(){
+	$(".ssubNav1").toggle(function(){
+		$("#mobileNav").slideDown(300);
+	},function(){
+		$("#mobileNav").slideUp(300);
+	})
+	$(".searchlogo").click(function(event){
+		event.stopPropagation();
+		$('.searchDIV').slideToggle('fast');
+	});
+});
+修改banner�?�?
+【北大文研讲座·�?�科�?与人文�?�系列�?�韩启德：医学是�?�?
+More >
+北京大学工学院卢海龙教授及其团队助力南海海域天然气水合物试采
+More >
+北大生科校友会第二届校友医师健康咨询活动成功举办
+More >
+百廿北大 因你而新：北�?2017年校园开放日暨�?�引领未来�?�本科生招生咨询会举�?
+More >
+北京大学“双�?流�?�建设推进交流会网站正式上线
+More >
+北京大学代表团访问美国�?�加拿大
+More >
+修改banner结束
+北大要闻
+今天�?
+0
+ 条新通知
+进入新闻�?
+教学科研
+媒体北大
+通知公告
+人物风采
+菁菁校园
+北大史苑
+北京大学�?史（1898�?2008�?
+北京大学�?史（1898�?2008�?
+专题网站
+专题热点
+专题热点
+迎新�?
+迎新�?
+毕业驿站
+毕业驿站
+光影燕园
+光影燕园
+北大微电�?
+北大微电�?
+信息公开�?
+党代表热�?
+校园地图�?
+未名BBS�?
+慕�??�?课�??
+校内门户�?
+网络服务�?
+相关链接�?
+北京大学官方微信
+北京大学招生�?
+北京大学校友�?
+北京大学信息服务
+北大新青�?
+北大未名BBS
+北大概况
+ 
+招生资助
+ 
+院系设置
+ 
+教育教学
+ 
+科学研究
+ 
+合作交流
+ 
+校园生活
+ 
+观光访问
+ 
+ 
+ 
+ 
+版权�?�??北京大学
+|
+地址：北京市海淀区颐和园�?5�?
+|
+邮编�?100871
+|
+邮箱：webmaster@pku.edu.cn
+|
+京ICP�?05065075�?-1
+|
+京公网安�? 110402430047 �? 
+ 
+ 版权�?�??北京大学
+|
+地址：北京市海淀区颐和园�?5�?
+|
+邮编�?100871
+邮箱：webmaster@pku.edu.cn
+|
+京ICP�?05065075�?-1
+|
+京公网安�? 110402430047 �? 
+ 
+版权�?�??北京大学
+邮编�?100871
+京ICP�?05065075�?-1
+|
+|
+|
+地址：北京市海淀区颐和园�?5�?
+邮箱：webmaster@pku.edu.cn
+京公网安�? 110402430047 �?
+window._bd_share_config={
+		"common":{
+			"bdSnsKey":{},
+			"bdText":"",
+			"bdMini":"2",
+			"bdMiniList":false,
+			"bdPic":"",
+			"bdStyle":"0",
+			"bdSize":"32"
+		},"share":{}
+	};
+	with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        $("a#wechat").hover(function(){
+            $("div#wechats").css("top","105px");
+            $("div#wechats").fadeIn();
+        },function(){
+            $("div#wechats").fadeOut();
+        });
+        $("a#wechat2").hover(function(){
+            $("div#wechats").css("top","0px");
+            $("div#wechats").fadeIn();
+        },function(){
+            $("div#wechats").fadeOut();
+        });
+×
+返回
+
+FAMES = [{"id":"maozedong","name":"毛泽东（1893�?1976）湖南湘潭人"},{"id":"lidazhao","name":"李大钊（1889�?1927）河北乐亭人"},{"id":"dengzhongxia","name":"邓中夏（1894�?1933）湖南宜章人"},{"id":"chenduxiu","name":"陈独�?�?1879�?1942）安徽�??宁人"},{"id":"zhangtailei","name":"张太雷（1898�?1927）江苏常州人"},{"id":"yinzanxun","name":"尹赞勋（1902�?1984）河北平乡人"},{"id":"fengding","name":"�?  定（1902�?1983）浙江宁波人"},{"id":"zhuwuhua","name":"朱物华（1902�?1998）江苏扬州人"},{"id":"jiangzehan","name":"江泽涵（1902�?1994）安徽旌德人"},{"id":"sunguohua","name":"孙国华（1902�?1958）山东潍县（今潍坊）�?"},{"id":"shencongwen","name":"沈从文（1902�?1988）湖南凤凰人"},{"id":"zhoupeiyuan","name":"周培源（1902�?1993）江苏宜兴人"},{"id":"zhaozhongyao","name":"赵忠尧（1902�?1998）浙江诸暨人"},{"id":"liangshiqiu","name":"梁实秋（1902�?1987）浙江杭县（今余杭）�?"},{"id":"fuying","name":"�?  鹰（1902�?1979）福建福州人"},{"id":"fenglanzhou","name":"冯兰洲（1903�?1972）山东临朐人"},{"id":"tangpeisong","name":"汤佩松（1903�?2001）湖北浠水人"},{"id":"linrong","name":"�?  镕（1903�?1981）江苏丹阳人"},{"id":"liusizhi","name":"刘�?�职�?1904�?1983）福建仙游人"},{"id":"liusizhi","name":"刘�?�职�?1904�?1983）福建仙游人"},{"id":"wangshuxian","name":"王叔咸（1904�?1985）上海市�?"},{"id":"huangjiqing","name":"黄汲清（1904�?1995）四川仁寿人"},{"id":"fengzhi","name":"�?  至（1905�?1993）河北涿州人"},{"id":"peiwenzhong","name":"裴文中（1904�?1982）河北丰南人"},{"id":"jianglongji","name":"江隆基（1905�?1966）陕西西乡人"},{"id":"xianxinghai","name":"冼星海（1905�?1945）广东番禺人"},{"id":"zhengxin","name":"�?  昕（1905�?1974）安徽庐江人"},{"id":"yuanhanqing","name":"袁翰青（1905�?1994）江苏南通人"},{"id":"yinda","name":"�?  达（1906�?1983）河南滑县人"},{"id":"yuruihuang","name":"余瑞璜（1906�?1997）江西宜黄人"},{"id":"mengzhaoying","name":"孟昭英（1906�?1995）河北乐亭人"},{"id":"zhangdayu","name":"张大煜（1906�?1989）江苏江阴人"},{"id":"tuchangwang","name":"涂长望（1906�?1962）湖北武汉人"},{"id":"wudayou","name":"吴大猷（1907�?2000）广东番禺人"},{"id":"zhangxiangtong","name":"张香桐（1907�?2007）河北正定人"},{"id":"zhoutongqing","name":"周同庆（1907�?1989）江苏昆山人"},{"id":"zhangmingtao","name":"章名涛（1907�?1985）浙江宁波人"},{"id":"zhangqinglian","name":"张青莲（1908�?2006）江苏常熟人"},{"id":"lilianjie","name":"李连捷（1908�?1992）河北玉田人"},{"id":"gugongxu","name":"顾功叙（1908�?1992）浙江嘉善人"},{"id":"yinhongzhang","name":"殷宏章（1908�?1992）贵州贵阳人"},{"id":"dingshengshu","name":"丁声树（1909�?1989）河南邓县人"},{"id":"qianjiaju","name":"千家驹（1909�?2002）浙江武义人"},{"id":"wuhan","name":"�?  晗（1909�?1969）浙江义乌人"},{"id":"wuxuelin","name":"吴学蔺（1909�?1985）江苏常州人"},{"id":"yangjiachi","name":"杨嘉�?�?1919�?2006）江苏吴江人"},{"id":"dengjiaxian","name":"邓稼先（1924�?1986）安徽�??宁人"},{"id":"wangxiji","name":"王希季（1921�?    ）云南大理人"},{"id":"zhuguangya","name":"朱光亚（1924�?2011）湖北武汉人"},{"id":"zhouguangzhao","name":"周光召（1929�?    ）湖南长沙人"},{"id":"yumin","name":"�?  敏（1926�?    ）河北宁河人"},{"id":"wuwenjun","name":"吴文俊（1919�?    ）上海市�?"},{"id":"huangkun","name":"�?  昆（1919�?2005）浙江嘉兴人"},{"id":"wangxuan","name":"�?  选（1937�?2006）江苏无锡人"},{"id":"zhangwenyou","name":"张文佑（1909�?1985）河北唐山人"},{"id":"aisiqi","name":"艾�?�奇�?1910�?1966）云南腾冲人"},{"id":"fuchengyi","name":"傅承义（1909�?2000）福建闽侯人"},{"id":"xubaolu","name":"许宝騄（1910�?1970）浙江杭州人"},{"id":"hualuogeng","name":"华罗庚（1910�?1985）江苏金坛人"},{"id":"zhaoyibing","name":"赵以炳（1909�?1987）江西南昌人"},{"id":"zhangwenyu","name":"张文裕（1910�?1992）福建惠安人"},{"id":"jixianlin","name":"季羡林（1911�?2009）山东清平人"},{"id":"qianweichang","name":"钱伟长（1912�?2010）江苏无锡人"},{"id":"wangzhuxi","name":"王竹溪（1911�?1983）湖北公安人"},{"id":"heqifang","name":"何其芳（1912�?1977）四川万县人"},{"id":"zhangwei","name":"�?  维（1913�?2001）北京市�?"},{"id":"getingsui","name":"葛庭燧（1913�?2000）山东篷莱人"},{"id":"madayou","name":"马大猷（1915�?2012）广东潮阳人"},{"id":"zhangzongsui","name":"张宗燧（1915�?1969）浙江杭州人"},{"id":"duanxuefu","name":"段学复（1914�?2005）陕西华县人"},{"id":"wangxianghao","name":"王湘浩（1915�?1993）河北安平人"},{"id":"tangaoqing","name":"唐敖庆（1915�?2008）江苏宜兴人"},{"id":"wuzhengyi","name":"吴征镒（1916�?2013）江苏仪征人"},{"id":"husheng","name":"�?  绳（1918�?2000）江苏苏州人"},{"id":"huning","name":"�?  宁（1916�?1997）江苏宿迁人"},{"id":"wuzhonghua","name":"吴仲华（1917�?1992）上海市�?"},{"id":"yangzhenning","name":"杨振宁（1922�?    ）安徽合肥人"},{"id":"lizhengdao","name":"李政道（1926�?    ）上海市�?"},{"id":"zhaojiuzhang","name":"赵九章（1907�?1968）河南开封人"},{"id":"qiansanqiang","name":"钱三强（1913�?1992）浙江湖州人"},{"id":"chenfangyun","name":"陈芳允（1916�?2000）浙江黄岩人"},{"id":"guoyonghuai","name":"郭永�?�?1909�?1968）山东荣城人"},{"id":"penghuanwu","name":"彭桓武（1915�?2007）湖北麻城人"},{"id":"tushoue","name":"屠守锷（1917�?2012）浙江吴兴人"},{"id":"gaojunyu","name":"高君宇（1896�?1925）山西静乐人"},{"id":"fanhongjie","name":"范鸿劼（1897�?1927）湖北鄂城人"},{"id":"weijiangong","name":"魏建功（1901�?1980）江苏海安人"},{"id":"sunbingwen","name":"孙炳文（1885�?1927）四川南溪人"},{"id":"qianzhuangfei","name":"钱壮飞（1895�?1935）浙江湖州人"},{"id":"huangrikui","name":"黄日葵（1898�?1930）广西桂平人"},{"id":"sunjianai","name":"孙家鼐（1827�?1909）安徽寿州（今寿县）�?"},{"id":"wurulun","name":"吴汝纶（1840�?1903）安徽桐城人"},{"id":"zhangbaixi","name":"张百熙（1847�?1907）湖南长沙人"},{"id":"zhanghengjia","name":"张亨嘉（1847�?1911）福建侯官（今福州）�?"},{"id":"linshu","name":"�?  纾（1852�?1924）福建闽县（今福州）�?"},{"id":"yanfu","name":"�?  复（1854�?1921）福建侯官（今福州）�?"},{"id":"caiyuanpei","name":"蔡元培（1868�?1940）浙江绍兴人"},{"id":"zhongguanguang","name":"钟观光（1869�?1940）浙江镇海人"},{"id":"gelipu","name":"葛利普（Amadeus William Grabau�?(1870�?1946)美国威斯康辛州人"},{"id":"liangqichao","name":"梁启超（1873�?1929）广东新会人"},{"id":"yutongkui","name":"俞同奎（1876�?1962）浙江德清人"},{"id":"zhanghongzhao","name":"章鸿钊（1877�?1951）浙江湖州人"},{"id":"zhongguanguang","name":"钟观光（1869�?1940）浙江镇海人"},{"id":"fengzuxun","name":"冯祖�?�?1880—约1940）浙江杭州人"},{"id":"chenyuan","name":"�?  垣（1880�?1971）广东新会人"},{"id":"maheng","name":"�?  衡（1881�?1955）浙江鄞县人"},{"id":"zhangshizhao","name":"章士钊（1881�?1973）湖南长沙人"},{"id":"luxun","name":"�?  迅（1881�?1936）浙江绍兴人"},{"id":"mayinchu","name":"马寅初（1882�?1982）浙江嵊县人"},{"id":"heyujie","name":"何育杰（1882�?1939）浙江慈谿人"},{"id":"qianchongshu","name":"钱崇澍（1883�?1965）浙江海宁人"},{"id":"maxulun","name":"马叙伦（1884�?1970）浙江杭州人"},{"id":"liushipei","name":"刘师培（1884�?1919）江苏仪征人"},{"id":"wumei","name":"�?  梅（1884�?1936）江苏长洲（今苏州市）人"},{"id":"xiayuanli","name":"夏元瑮（1884�?1944）浙江杭州人"},{"id":"xiaoyoumei","name":"萧友梅（1884�?1940）广东香山（今中山）�?"},{"id":"xiongshili","name":"熊十力（1884�?1968）湖北黄冈人"},{"id":"mawenzhao","name":"马文昭（1886�?1965）河北保定人"},{"id":"renhongjuan","name":"任鸿隽（1886�?1961）浙江吴兴（今湖州）�?"},{"id":"shenjianshi","name":"沈兼士（1886�?1947）浙江吴兴（今湖州）�?"},{"id":"bingzhi","name":"�?  志（1886�?1965）河南开封人"},{"id":"huangkan","name":"�?  侃（1886�?1935）湖北蕲春人"},{"id":"jiangmenglin","name":"蒋梦麟（1886�?1964）浙江余姚人"},{"id":"dingwenjiang","name":"丁文江（1887�?1936）江苏泰兴人"},{"id":"wangxinggong","name":"王星拱（1887�?1950）安徽�??宁人"},{"id":"chendaqi","name":"陈大齐（1887�?1983）浙江海盐人"},{"id":"qianxuantong","name":"钱玄同（1887�?1939）浙江吴兴（今湖州）�?"},{"id":"taomenghe","name":"陶孟和（1887�?1960）天津市�?"},{"id":"duguoyang","name":"杜国庠（1889�?1961）广东澄海人"},{"id":"lisiguang","name":"李四光（1889�?1971）湖北黄冈人"},{"id":"wengwenhao","name":"翁文灏（1889�?1971）浙江鄞县人"},{"id":"liuxianzhou","name":"刘仙洲（1890�?1975）河北完县人"},{"id":"xudehang","name":"许德珩（1890�?1990）江西九江人"},{"id":"chenyinke","name":"陈寅恪（1890�?1969）江西义宁（今修水）�?"},{"id":"lijinxi","name":"黎锦熙（1890�?1978）湖南湘潭人"},{"id":"wangzhuquan","name":"王竹泉（1891�?1975）河北交河人"},{"id":"liubannong","name":"刘半农（1891�?1934）江苏江阴人"},{"id":"bihuade","name":"毕华德（1891�?1966）北京市�?"},{"id":"hushi","name":"�?  适（1891�?1962）安徽绩溪人"},{"id":"raoyutai","name":"饶毓泰（1891�?1968）江西临川人"},{"id":"tangyue","name":"�?  钺（1891�?1987）福建侯官（今福州）�?"},{"id":"tangyongtong","name":"汤用彤（1893�?1964）湖北黄梅人"},{"id":"jinbaoshan","name":"金宝善（1893�?1984）浙江绍兴人"},{"id":"fanwenlan","name":"范文澜（1893�?1969）浙江绍兴人"},{"id":"gujiegang","name":"顾颉刚（1893�?1980）江苏苏州人"},{"id":"liangshuming","name":"梁漱溟（1893�?1988）广西桂林人"},{"id":"panzinian","name":"潘梓年（1893�?1972）江苏宜兴人"},{"id":"daifanglan","name":"戴芳澜（1893�?1973）湖北江陵人"},{"id":"yeshengtao","name":"叶圣陶（1894�?1988）江苏苏州人"},{"id":"shenjunqi","name":"沈寯淇（1894�?1969）天津市�?"},{"id":"chenzhen","name":"�?  桢（1894�?1957）江苏邗江人"},{"id":"xubaohuang","name":"徐宝璜（1894�?1930）江西九江人"},{"id":"xueyu","name":"�?  愚（1894�?1988）湖北襄阳（今襄樊市）人"},{"id":"fengyoulan","name":"冯友兰（1895�?1990）河南唐河人"},{"id":"liutianhua","name":"刘天华（1895�?1932）江苏江阴人"},{"id":"sunyunzhu","name":"孙云铸（1895�?1979）江苏高邮人"},{"id":"liruqi","name":"李汝祺（1895�?1991）天津市�?"},{"id":"zhangjingyue","name":"张景钺（1895�?1975）江苏武进人"},{"id":"linyutang","name":"林语堂（1895�?1976）福建龙溪（今龙海）�?"},{"id":"jinyuelin","name":"金岳霖（1895�?1984）湖南长沙人"},{"id":"qianmu","name":"�?  穆（1895�?1990）江苏无锡人"},{"id":"xubeihong","name":"徐悲鸿（1895�?1953）江苏宜兴人"},{"id":"dongzuobin","name":"董作宾（1895�?1963）河南南阳人"},{"id":"jiwenfu","name":"嵇文甫（1895�?1963）河南汲县人"},{"id":"shenyanbing","name":"沈雁冰（1896�?1981）浙江桐乡人"},{"id":"fusinian","name":"傅斯年（1896�?1950）山东聊城人"},{"id":"shizhiren","name":"石志仁（1897�?1972）河北昌黎人"},{"id":"zhuguangqian","name":"朱光潜（1897�?1986）安徽桐城人"},{"id":"yangshixian","name":"杨石先（1897�?1985）浙江杭州人"},{"id":"lijidong","name":"李继侗（1897�?1961）江苏兴化人"},{"id":"yangzhongjian","name":"杨钟健（1897�?1979）陕西华县人"},{"id":"chenhansheng","name":"陈翰笙（1897�?2004）江苏无锡人"},{"id":"wuyouxun","name":"吴有训（1897�?1977）江西高安人"},{"id":"luojialun","name":"罗家伦（1897�?1969）浙江绍兴人"},{"id":"xuzhimo","name":"徐志摩（1897�?1931）浙江海宁人"},{"id":"caojinghua","name":"曹靖华（1897�?1987）河南卢氏人"},{"id":"yuhongzheng","name":"虞宏正（1897�?1966）福建闽侯人"},{"id":"panshu","name":"�?  菽（1897�?1988）江苏宜兴人"},{"id":"yeqisun","name":"叶企孙（1898�?1977）上海市�?"},{"id":"fengjinglan","name":"冯景兰（1898�?1976）河南唐河人"},{"id":"zhengzhenduo","name":"郑振铎（1898�?1958）福建长乐人"},{"id":"zhuziqing","name":"朱自清（1898�?1948）浙江绍兴人"},{"id":"huangminglong","name":"黄鸣龙（1898�?1979）江苏扬州人"},{"id":"xiejiarong","name":"谢家荣（1898�?1966）上海市�?"},{"id":"jianbozan","name":"翦伯赞（1898�?1968）湖南桃源人"},{"id":"tianqijuan","name":"田奇镌（1899�?1975）湖南大庸人"},{"id":"lesenxun","name":"乐森璕（1899�?1989）贵州贵阳人"},{"id":"jiyufeng","name":"纪育沣（1899�?1982）浙江鄞县人"},{"id":"luochangpei","name":"罗常培（1899�?1958）北京市�?"},{"id":"yanghui","name":"�?  晦（1899�?1983）辽宁辽阳人"},{"id":"zhengtianting","name":"郑天挺（1899�?1981）福建长乐人"},{"id":"yujianzhang","name":"俞建章（1899�?1980）安徽和县人"},{"id":"wenyidong","name":"闻一多（1899�?1946）湖北浠水人"},{"id":"zhufutang","name":"诸福棠（1899�?1994）江苏无锡人"},{"id":"zengzhaolun","name":"曾昭抡（1899�?1967）湖南湘乡人"},{"id":"youguodong","name":"游国恩（1899�?1978）江西临川人"},{"id":"wangli","name":"�?  力（1900�?1986）广西博白人"},{"id":"xiangda","name":"�?  达（1900�?1966）湖南溆浦人"},{"id":"wuchaoren","name":"吴朝仁（1900�?1973）福建福州人"},{"id":"hezuolin","name":"何作霖（1900�?1967）河北蠡县人"},{"id":"chendaisun","name":"陈岱孙（1900�?1997）福建闽侯人"},{"id":"zhangzhaoqian","name":"张肇骞（1900�?1972）浙江温州人"},{"id":"linzhengang","name":"林振纲（1900�?1976）浙江绍兴人"},{"id":"houdefeng","name":"侯德封（1900�?1980）河北高阳人"},{"id":"yupingbo","name":"俞平伯（1900�?1990）浙江德清人"},{"id":"qiandongsheng","name":"钱端升（1900�?1990）上海市�?"},{"id":"maoxiejun","name":"毛燮均（1901�?1979）四川仁寿人"},{"id":"huangziqing","name":"黄子卿（1900�?1982）广东梅县人"},{"id":"liuchongle","name":"刘崇乐（1901�?1969）福建福州人"},{"id":"linqiaozhi","name":"林巧稚（1901�?1983）福建厦门人"},{"id":"xujie","name":"�?  杰（1901�?1989）安徽广德人"},{"id":"huchuankui","name":"胡传揆（1901�?1986）湖北江陵人"},{"id":"zhonghuilan","name":"钟惠澜（1901�?1987）广东梅县人"},{"id":"yudafu","name":"俞大绂（1901�?1993）浙江绍兴人"},{"id":"liangsicheng","name":"梁�?�成�?1901�?1972）广东新会人"},{"id":"sixingjian","name":"斯行健（1901�?1964）浙江诸暨人"},{"id":"caifangyin","name":"蔡方荫（1901�?1963）江西南昌人"},{"id":"zangyuquan","name":"臧玉洤（1901�?1964）河北完县人"}];
+    FAME_I=0;
+    function showFamous(){
+           jQuery.get("seg/celebrities/"+FAMES[FAME_I].id+".seg",function(dat)
+        {
+            	$("#id_LB_content").html(dat);
+                  openLightbox();
+        },"text");
+    }
+    $(function () {
+        $("#mbtn").click(function(){
+            $("#navm").toggle(300);
+        });
+        /*$("#slider").responsiveSlides({
+            auto: true,
+            pager: false,
+            nav: true,
+            speed: 500,
+            // 对应外层div的class : slide_container
+            namespace: "slide"
+        });*/
+        
+        /* 随机获取名人*/
+        var fl = FAMES.length;
+        FAME_I = Math.floor(Math.random()*fl);
+        $("#conR dl.last dd a img").attr("src","img/celebrities/"+FAMES[FAME_I].id+".png");
+        $("#conR dl.last dd a h3").text(FAMES[FAME_I].name);
+        $("#conR dl.last dd section h3").text(FAMES[FAME_I].name);
     });
-var myUrl = window.location.host + window.location.pathname ;
-        if( myUrl === 'www.bilibili.com/' || myUrl === 'www.bilibili.com/index.html' ){
-            
-            var config = {
-                sample : 1,
-                errorTracker : true ,
-                resourceTracker: false ,
-                scrollTracker: true,
-                msgObjects : ''
+   
+     jQuery.get("dat/newsLeft.xml", function(dat)
+    {
+    	var news=dat.getElementsByTagName("root");
+	var table = document.getElementById("newsLeft");
+	table.innerHTML=news[0].firstChild.data;    
+    });
+     jQuery.get("dat/newsCenter.xml", function(dat)
+    {
+    	var news=dat.getElementsByTagName("root");
+	var table = document.getElementById("newsCenter");
+	table.innerHTML=news[0].firstChild.data;    
+    });
+     jQuery.get("dat/newsRight.xml", function(dat)
+    {
+    	var news=dat.getElementsByTagName("root");
+	$("#newsRight").children("[class!=\"last\"]").remove();
+         $("#newsRight li:last-child").before(news[0].firstChild.data);
+        
+    }); 
+     jQuery.get("dat/notice_num.dat", function(dat)
+    {
+        if(false == isNaN(parseInt(dat)))
+	       $("#notice_num").html("<b>&nbsp;" + parseInt(dat) + "&nbsp;</b>");
+        else
+            $("#notice_num").html("<b>&nbsp;0&nbsp;</b>");
+    });
+ jQuery.get("dat/newsJXKY.xml", function(dat)
+    {
+    	var news=dat.getElementsByTagName("root");
+	$("section.jxky>dl").html(news[0].firstChild.data);
+        
+    }); 
 
-            };
-            var jq = document.createElement('script');
-            jq.src = "//s1.hdslb.com/bfs/static/log/report/output.6753d.js";
-            document.getElementsByTagName('body')[0].appendChild(jq);
-        }
-var cnzz_s_tag = document.createElement('script');
-        cnzz_s_tag.type = 'text/javascript';
-        cnzz_s_tag.async = true;
-        cnzz_s_tag.charset = "utf-8";
-        cnzz_s_tag.src = "https://s11.cnzz.com/stat.php?id=2724999&web_id=2724999&async=1";
-        var root_s = document.getElementsByTagName('script')[0];
-        root_s.parentNode.insertBefore(cnzz_s_tag, root_s);
+    jQuery.get("dat/newsMTBD.xml", function(dat)
+    {
+    	var news=dat.getElementsByTagName("root");
+	$("section.mtbd>ul").html(news[0].firstChild.data);
+        
+    }); 
+     jQuery.get("dat/newsRWFC.xml", function(dat)
+    {
+    	var news=dat.getElementsByTagName("root");
+	$("section.conR>dl.first").html(news[0].firstChild.data);    
+    }); 
+     jQuery.get("dat/newsJJXY.xml", function(dat)
+    {
+    	var news=dat.getElementsByTagName("root");
+	$("section.conR>dl").eq(1).html(news[0].firstChild.data);        
+    }); 
+
+jQuery.get("dat/newsZTWZ.xml", function(dat)
+    {
+    	var news=dat.getElementsByTagName("root");
+	$("section.ztw>dl>dd").html(news[0].firstChild.data); 
+    }); 
+
+    jQuery.get("dat/recentList.xml", function(dat)
+    {
+    	var noticeList=dat.getElementsByTagName("Notice");
+	var table = document.getElementById("pku_notice");
+	var listContent="";
+	for(var i=0;i<3 && i<noticeList.length;i++){
+		listContent=listContent+"<li><span><i>"+
+	   		noticeList[i].getElementsByTagName("PubDate")[0].firstChild.data.substring(5,10)+
+	   		"</i>  .  "+noticeList[i].getElementsByTagName("PubDate")[0].firstChild.data.substring(0,4)+
+	  		 "</span><a href=\"./tzgg/tzggxx/index.htm?id="+
+	  		 noticeList[i].getElementsByTagName("ID")[0].firstChild.data+"\">"+
+	  		 noticeList[i].getElementsByTagName("Title")[0].firstChild.data+" </a> </li>";
+	}
+	table.innerHTML=listContent;    
+    });
+banner效果JS
+
+
+

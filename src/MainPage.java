@@ -31,6 +31,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.MalformedURLException;
@@ -323,6 +324,7 @@ class MainPage extends JFrame {
 				URLConnection connection = new URL(urlString).openConnection();
 				connection.setConnectTimeout(1000);
 				connection.setReadTimeout(1000);
+				
 				in = connection.getInputStream();
 			} catch (MalformedURLException e) {
 				urlMalformed();
@@ -362,7 +364,8 @@ class MainPage extends JFrame {
 			try {
 				doc = new DefaultStyledDocument();
 				HTMLEditorKit.Parser parser = new ParserDelegator();
-				parser.parse(new FileReader(fileSave), new HTMLHandler(colors, doc), true);
+				parser.parse(new InputStreamReader(new FileInputStream(fileSave), "utf-8"), 
+						new HTMLHandler(colors, doc), true);
 				ObjectOutputStream fout = new ObjectOutputStream(new FileOutputStream(fileParsed));
 				fout.writeObject(doc);
 				fout.close();
@@ -441,7 +444,8 @@ class MainPage extends JFrame {
 				} else {
 					doc = new DefaultStyledDocument();
 					HTMLEditorKit.Parser parser = new ParserDelegator();
-					parser.parse(new FileReader(fileSave), new HTMLHandler(colors, doc), true);
+					parser.parse(new InputStreamReader(new FileInputStream(fileSave), "utf-8"), 
+							new HTMLHandler(colors, doc), true);
 					ObjectOutputStream fout = new ObjectOutputStream(new FileOutputStream(fileParsed));
 					fout.writeObject(doc);
 					fout.close();
