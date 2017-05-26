@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public class ImportEditorPanel extends SynchronizedPanel {
 
 	private final SynchronizedPanel thisPanel = this;

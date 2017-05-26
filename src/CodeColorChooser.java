@@ -26,12 +26,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ScrollPaneConstants;
 
+@SuppressWarnings("serial")
 class CodeColorChooser extends SynchronizedPanel {
 	private JButton btnApply;
 	private JPanel valuePanel;
 	private JList<ColorPackage> list;
 	private boolean isEdited;
 	private JLabel lblSave;
+	private Vector<ColorPackage> vec;
+	private Vector<Color> vecColors;
 
 	/**
 	 * Create the panel.
@@ -89,46 +92,10 @@ class CodeColorChooser extends SynchronizedPanel {
 			lbl.setFont(new Font("微软雅黑", Font.PLAIN, 20));
 			leftPanel.add(lbl, BorderLayout.NORTH);
 		}
-		Vector<ColorPackage> vec = new Vector<>();
-		ColorPackage initPackage = new ColorPackage("背景") {
-			@Override
-			public void run() {
-				Color color = JColorChooser.showDialog(null, "选择颜色", colors.colorBackground); 
-				if (color != null) {
-					colors.colorBackground = color;
-					updatePane();
-				}
-			}
-
-			@Override
-			public JComponent getValue() {
-				JLabel lbl = new JLabel();
-				lbl.setPreferredSize(new Dimension(40, 20));
-				lbl.setBackground(colors.colorBackground);
-				lbl.setOpaque(true);
-				return lbl;
-			}
-		};
-		vec.add(initPackage);
-		vec.add(new ColorPackage("网页内容") {
-			@Override
-			public void run() {
-				Color color = JColorChooser.showDialog(null, "选择颜色", colors.colorContent);
-				if (color != null) {
-					colors.colorContent = color;
-					updatePane();
-				}
-			}
-			
-			@Override
-			public JComponent getValue() {
-				JLabel lbl = new JLabel();
-				lbl.setPreferredSize(new Dimension(40, 20));
-				lbl.setBackground(colors.colorContent);
-				lbl.setOpaque(true);
-				return lbl;
-			}
-		});
+		vec = new Vector<>();
+		initVecColors();
+		addColorPackage("背景", 0);
+		addColorPackage("网页内容", 1);
 		vec.add(new ColorPackage("缩进数量") {
 			@Override
 			public void run() {
@@ -153,334 +120,28 @@ class CodeColorChooser extends SynchronizedPanel {
 				return lbl;
 			}
 		});
-		vec.add(new ColorPackage("标签") {
-			@Override
-			public void run() {
-				Color color = JColorChooser.showDialog(null, "选择颜色", colors.colorTag); 
-				if (color != null) {
-					colors.colorTag = color;
-					updatePane();
-				}
-			}
-			
-			@Override
-			public JComponent getValue() {
-				JLabel lbl = new JLabel();
-				lbl.setPreferredSize(new Dimension(40, 20));
-				lbl.setBackground(colors.colorTag);
-				lbl.setOpaque(true);
-				return lbl;
-			}
-		});
-		vec.add(new ColorPackage("标签标识") {
-			@Override
-			public void run() {
-				Color color = JColorChooser.showDialog(null, "选择颜色", colors.colorTagLabel);
-				if (color != null) {
-					colors.colorTagLabel = color;
-					updatePane();
-				}
-			}
-			
-			@Override
-			public JComponent getValue() {
-				JLabel lbl = new JLabel();
-				lbl.setPreferredSize(new Dimension(40, 20));
-				lbl.setBackground(colors.colorTagLabel);
-				lbl.setOpaque(true);
-				return lbl;
-			}
-		});
-		vec.add(new ColorPackage("属性名") {
-			@Override
-			public void run() {
-				Color color = JColorChooser.showDialog(null, "选择颜色", colors.colorAttributeName); 
-				if (color != null) {
-					colors.colorAttributeName = color;
-					updatePane();
-				}
-			}
-			
-			@Override
-			public JComponent getValue() {
-				JLabel lbl = new JLabel();
-				lbl.setPreferredSize(new Dimension(40, 20));
-				lbl.setBackground(colors.colorAttributeName);
-				lbl.setOpaque(true);
-				return lbl;
-			}
-		});
-		vec.add(new ColorPackage("属性值") {
-			@Override
-			public void run() {
-				Color color = JColorChooser.showDialog(null, "选择颜色", colors.colorAttributeValue); 
-				if (color != null) {
-					colors.colorAttributeValue = color;
-					updatePane();
-				}
-			}
-			
-			@Override
-			public JComponent getValue() {
-				JLabel lbl = new JLabel();
-				lbl.setPreferredSize(new Dimension(40, 20));
-				lbl.setBackground(colors.colorAttributeValue);
-				lbl.setOpaque(true);
-				return lbl;
-			}
-		});
-		vec.add(new ColorPackage("资源链接") {
-			@Override
-			public void run() {
-				Color color = JColorChooser.showDialog(null, "选择颜色", colors.colorLink); 
-				if (color != null) {
-					colors.colorLink = color;
-					updatePane();
-				}
-			}
-			
-			@Override
-			public JComponent getValue() {
-				JLabel lbl = new JLabel();
-				lbl.setPreferredSize(new Dimension(40, 20));
-				lbl.setBackground(colors.colorLink);
-				lbl.setOpaque(true);
-				return lbl;
-			}
-		});
-		vec.add(new ColorPackage("网页注释") {
-			@Override
-			public void run() {
-				Color color = JColorChooser.showDialog(null, "选择颜色", colors.colorComment); 
-				if (color != null) {
-					colors.colorComment = color;
-					updatePane();
-				}
-			}
-			
-			@Override
-			public JComponent getValue() {
-				JLabel lbl = new JLabel();
-				lbl.setPreferredSize(new Dimension(40, 20));
-				lbl.setBackground(colors.colorComment);
-				lbl.setOpaque(true);
-				return lbl;
-			}
-		});
-		vec.add(new ColorPackage("CSS字段") {
-			@Override
-			public void run() {
-				Color color = JColorChooser.showDialog(null, "选择颜色", colors.colorCSSVariable); 
-				if (color != null) {
-					colors.colorCSSVariable = color;
-					updatePane();
-				}
-			}
-			
-			@Override
-			public JComponent getValue() {
-				JLabel lbl = new JLabel();
-				lbl.setPreferredSize(new Dimension(40, 20));
-				lbl.setBackground(colors.colorCSSVariable);
-				lbl.setOpaque(true);
-				return lbl;
-			}
-		});
-		vec.add(new ColorPackage("Json属性名") {
-			@Override
-			public void run() {
-				Color color = JColorChooser.showDialog(null, "选择颜色", colors.colorJsonAttributeName); 
-				if (color != null) {
-					colors.colorJsonAttributeName = color;
-					updatePane();
-				}
-			}
-			
-			@Override
-			public JComponent getValue() {
-				JLabel lbl = new JLabel();
-				lbl.setPreferredSize(new Dimension(40, 20));
-				lbl.setBackground(colors.colorJsonAttributeName);
-				lbl.setOpaque(true);
-				return lbl;
-			}
-		});
-		vec.add(new ColorPackage("Json属性值") {
-			@Override
-			public void run() {
-				Color color = JColorChooser.showDialog(null, "选择颜色", colors.colorJsonAttributeValue); 
-				if (color != null) {
-					colors.colorJsonAttributeValue = color;
-					updatePane();
-				}
-			}
-			
-			@Override
-			public JComponent getValue() {
-				JLabel lbl = new JLabel();
-				lbl.setPreferredSize(new Dimension(40, 20));
-				lbl.setBackground(colors.colorJsonAttributeValue);
-				lbl.setOpaque(true);
-				return lbl;
-			}
-		});
-		vec.add(new ColorPackage("风格属性名") {
-			@Override
-			public void run() {
-				Color color = JColorChooser.showDialog(null, "选择颜色", colors.colorCSSAttributeName); 
-				if (color != null) {
-					colors.colorCSSAttributeName = color;
-					updatePane();
-				}
-			}
-			
-			@Override
-			public JComponent getValue() {
-				JLabel lbl = new JLabel();
-				lbl.setPreferredSize(new Dimension(40, 20));
-				lbl.setBackground(colors.colorCSSAttributeName);
-				lbl.setOpaque(true);
-				return lbl;
-			}
-		});
-		vec.add(new ColorPackage("风格属性值") {
-			@Override
-			public void run() {
-				Color color = JColorChooser.showDialog(null, "选择颜色", colors.colorCSSAttributeValue); 
-				if (color != null) {
-					colors.colorCSSAttributeValue = color;
-					updatePane();
-				}
-			}
-			
-			@Override
-			public JComponent getValue() {
-				JLabel lbl = new JLabel();
-				lbl.setPreferredSize(new Dimension(40, 20));
-				lbl.setBackground(colors.colorCSSAttributeValue);
-				lbl.setOpaque(true);
-				return lbl;
-			}
-		});
-		vec.add(new ColorPackage("代码保留字") {
-			@Override
-			public void run() {
-				Color color = JColorChooser.showDialog(null, "选择颜色", colors.colorCodeRetain); 
-				if (color != null) {
-					colors.colorCodeRetain = color;
-					updatePane();
-				}
-			}
-			
-			@Override
-			public JComponent getValue() {
-				JLabel lbl = new JLabel();
-				lbl.setPreferredSize(new Dimension(40, 20));
-				lbl.setBackground(colors.colorCodeRetain);
-				lbl.setOpaque(true);
-				return lbl;
-			}
-		});
-		vec.add(new ColorPackage("代码内变量") {
-			@Override
-			public void run() {
-				Color color = JColorChooser.showDialog(null, "选择颜色", colors.colorCodeVariable); 
-				if (color != null) {
-					colors.colorCodeVariable = color;
-					updatePane();
-				}
-			}
-			
-			@Override
-			public JComponent getValue() {
-				JLabel lbl = new JLabel();
-				lbl.setPreferredSize(new Dimension(40, 20));
-				lbl.setBackground(colors.colorCodeVariable);
-				lbl.setOpaque(true);
-				return lbl;
-			}
-		});
-		vec.add(new ColorPackage("代码内函数") {
-			@Override
-			public void run() {
-				Color color = JColorChooser.showDialog(null, "选择颜色", colors.colorCodeFunction); 
-				if (color != null) {
-					colors.colorCodeFunction = color;
-					updatePane();
-				}
-			}
-			
-			@Override
-			public JComponent getValue() {
-				JLabel lbl = new JLabel();
-				lbl.setPreferredSize(new Dimension(40, 20));
-				lbl.setBackground(colors.colorCodeFunction);
-				lbl.setOpaque(true);
-				return lbl;
-			}
-		});
-		vec.add(new ColorPackage("代码字符串") {
-			@Override
-			public void run() {
-				Color color = JColorChooser.showDialog(null, "选择颜色", colors.colorCodeString); 
-				if (color != null) {
-					colors.colorCodeString = color;
-					updatePane();
-				}
-			}
-			
-			@Override
-			public JComponent getValue() {
-				JLabel lbl = new JLabel();
-				lbl.setPreferredSize(new Dimension(40, 20));
-				lbl.setBackground(colors.colorCodeString);
-				lbl.setOpaque(true);
-				return lbl;
-			}
-		});
-		vec.add(new ColorPackage("代码标点") {
-			@Override
-			public void run() {
-				Color color = JColorChooser.showDialog(null, "选择颜色", colors.colorComma); 
-				if (color != null) {
-					colors.colorComma = color;
-					updatePane();
-				}
-			}
-			
-			@Override
-			public JComponent getValue() {
-				JLabel lbl = new JLabel();
-				lbl.setPreferredSize(new Dimension(40, 20));
-				lbl.setBackground(colors.colorComma);
-				lbl.setOpaque(true);
-				return lbl;
-			}
-		});
-		vec.add(new ColorPackage("代码内注释") {
-			@Override
-			public void run() {
-				Color color = JColorChooser.showDialog(null, "选择颜色", colors.colorCSSComment); 
-				if (color != null) {
-					colors.colorCSSComment = color;
-					updatePane();
-				}
-			}
-			
-			@Override
-			public JComponent getValue() {
-				JLabel lbl = new JLabel();
-				lbl.setPreferredSize(new Dimension(40, 20));
-				lbl.setBackground(colors.colorCSSComment);
-				lbl.setOpaque(true);
-				return lbl;
-			}
-		});
+		addColorPackage("标签", 2);
+		addColorPackage("标签标识", 3);
+		addColorPackage("属性名", 4);
+		addColorPackage("属性值", 5);
+		addColorPackage("资源链接", 6);
+		addColorPackage("网页注释", 7);
+		addColorPackage("CSS字段", 8);
+		addColorPackage("Json属性名", 9);
+		addColorPackage("Json属性值", 10);
+		addColorPackage("风格属性名", 11);
+		addColorPackage("风格属性值", 12);
+		addColorPackage("代码保留字", 13);
+		addColorPackage("代码内变量", 14);
+		addColorPackage("代码内函数", 15);
+		addColorPackage("代码字符串", 16);
+		addColorPackage("代码标点", 17);
+		addColorPackage("代码内注释", 18);
 		list = new JList<>(vec);
 		list.addListSelectionListener(e -> {
 			updateValuePanel();
 		});
-		list.setSelectedValue(initPackage, true);
+		list.setSelectedIndex(0);
 		list.setFont(new Font("微软雅黑", Font.PLAIN, 16));
 		JScrollPane scr = new JScrollPane(list);
 		scr.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -536,6 +197,7 @@ class CodeColorChooser extends SynchronizedPanel {
 	}
 	
 	private void updatePane() {
+		updateColors();
 		doc = textPane.getStyledDocument();
 		try {
 			doc.remove(0, doc.getLength());
@@ -583,6 +245,15 @@ class CodeColorChooser extends SynchronizedPanel {
 		insertWithColor("aString", colors.colorCodeVariable);
 		insertWithColor("=\'");
 		insertWithColor("字符串", colors.colorCodeString);
+		insertWithColor("\';\n");
+		insertIndents();
+		insertIndents();
+		insertIndents();
+		insertWithColor("aJson", colors.colorCodeVariable);
+		insertWithColor("=\'");
+		insertWithColor("Json属性名", colors.colorJsonAttributeName);
+		insertWithColor(":");
+		insertWithColor("Json属性值", colors.colorJsonAttributeValue);
 		insertWithColor("\';\n");
 		insertIndents();
 		insertIndents();
@@ -683,10 +354,78 @@ class CodeColorChooser extends SynchronizedPanel {
 	
 	public void setColors(ColorLibrary thecolors) {
 		colors = thecolors.clone();
+		initVecColors();
 		updatePane();
 	}
 	
 	public boolean isEdited() {
 		return isEdited;
+	}
+	
+	private void addColorPackage(String title, int id) {
+		vec.add(new ColorPackage(title) {
+			@Override
+			public void run() {
+				Color color = JColorChooser.showDialog(null, "选择颜色", vecColors.elementAt(id)); 
+				if (color != null) {
+					vecColors.set(id, color);
+					updatePane();
+				}
+			}
+			
+			@Override
+			public JComponent getValue() {
+				JLabel lbl = new JLabel();
+				lbl.setPreferredSize(new Dimension(40, 20));
+				lbl.setBackground(vecColors.elementAt(id));
+				lbl.setOpaque(true);
+				return lbl;
+			}
+		});
+	}
+	
+	private void initVecColors() {
+		vecColors = new Vector<>();
+		vecColors.add(colors.colorBackground);
+		vecColors.add(colors.colorContent);
+		vecColors.add(colors.colorTag);
+		vecColors.add(colors.colorTagLabel);
+		vecColors.add(colors.colorAttributeName);
+		vecColors.add(colors.colorAttributeValue);
+		vecColors.add(colors.colorLink);
+		vecColors.add(colors.colorComment);
+		vecColors.add(colors.colorCSSVariable);
+		vecColors.add(colors.colorJsonAttributeName);
+		vecColors.add(colors.colorJsonAttributeValue);
+		vecColors.add(colors.colorCSSAttributeName);
+		vecColors.add(colors.colorCSSAttributeValue);
+		vecColors.add(colors.colorCodeRetain);
+		vecColors.add(colors.colorCodeVariable);
+		vecColors.add(colors.colorCodeFunction);
+		vecColors.add(colors.colorCodeString);
+		vecColors.add(colors.colorComma);
+		vecColors.add(colors.colorCSSComment);
+	}
+	
+	private void updateColors() {
+		colors.colorBackground = vecColors.elementAt(0);
+		colors.colorContent = vecColors.elementAt(1);
+		colors.colorTag = vecColors.elementAt(2);
+		colors.colorTagLabel = vecColors.elementAt(3);
+		colors.colorAttributeName = vecColors.elementAt(4);
+		colors.colorAttributeValue = vecColors.elementAt(5);
+		colors.colorLink = vecColors.elementAt(6);
+		colors.colorComment = vecColors.elementAt(7);
+		colors.colorCSSVariable = vecColors.elementAt(8);
+		colors.colorJsonAttributeName = vecColors.elementAt(9);
+		colors.colorJsonAttributeValue = vecColors.elementAt(10);
+		colors.colorCSSAttributeName = vecColors.elementAt(11);
+		colors.colorCSSAttributeValue = vecColors.elementAt(12);
+		colors.colorCodeRetain = vecColors.elementAt(13);
+		colors.colorCodeVariable = vecColors.elementAt(14);
+		colors.colorCodeFunction = vecColors.elementAt(15);
+		colors.colorCodeString = vecColors.elementAt(16);
+		colors.colorComma = vecColors.elementAt(17);
+		colors.colorCSSComment = vecColors.elementAt(18);
 	}
 }

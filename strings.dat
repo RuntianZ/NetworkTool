@@ -1,0 +1,305 @@
+哔哩哔哩 (�?-�?)つロ 干杯~-bilibili
+
+
+
+
+
+
+body { min-height: 1500px; } 
+ 2017-05-26 22:21:22 
+biliAdjust();
+            $(function () {
+                biliAdjust(true);
+                $(window).resize(biliAdjust);
+            });
+<div id="httpsNotWorkTips">
+    <text style="font-family: 'PingFang SC'; font-size: 16px; font-variant-ligatures: normal; orphans: 2; widows: 2; color: red;">访问异常�?</text><span style="font-family: 'PingFang SC'; font-size: medium; font-variant-ligatures: normal; orphans: 2; widows: 2;">&nbsp;</span><a style="font-family: 'PingFang SC'; font-size: medium; font-variant-ligatures: normal; orphans: 2; widows: 2; color: blue;" target="_blank" href="http://www.bilibili.com/html/diagnostics.html">【点击这里�??</a><span style="font-family: 'PingFang SC'; font-size: medium; font-variant-ligatures: normal; orphans: 2; widows: 2;">&nbsp;</span><text style="font-family: 'PingFang SC'; font-size: 16px; font-variant-ligatures: normal; orphans: 2; widows: 2; color: red;">请将的诊断结果与系统环境、正在使用的浏览器信息发送给我们，邮箱：bug@bilibili.com，或进入</text><span style="font-family: 'PingFang SC'; font-size: medium; font-variant-ligatures: normal; orphans: 2; widows: 2;">&nbsp;</span><a style="font-family: 'PingFang SC'; font-size: medium; font-variant-ligatures: normal; orphans: 2; widows: 2; color: blue;" target="_blank" href="http://link.acg.tv">【用户反馈论坛�??</a><span style="font-family: 'PingFang SC'; font-size: medium; font-variant-ligatures: normal; orphans: 2; widows: 2;">&nbsp;</span><text style="font-family: 'PingFang SC'; font-size: 16px; font-variant-ligatures: normal; orphans: 2; widows: 2; color: red;">反映�?</text><span style=" font-size:12pt;font-family:DengXian ;;;"><br></span>
+</div>
+主站
+画友
+游戏中心
+直播
+周边
+BML
+移动�?
+个人中心
+投稿管理
+B币钱�?
+直播中心
+�?�?
+成为大会�?
+消息
+动�??
+收藏�?
+登录
+注册
+历史
+�? �?
+视频投稿
+投稿管理
+创作中心
+首页
+ 动画 
+动画
+--
+MAD·AMV
+MMD·3D
+短片·手书·配音
+综合
+ 番剧 
+番剧
+--
+连载动画
+完结动画
+资讯
+官方延伸
+新番时间�?
+番剧索引
+ 国创 
+国创
+--
+国产动画
+国产原创相关
+布袋�?
+资讯
+新番时间�?
+国产动画索引
+ 音乐 
+音乐
+--
+原创音乐
+翻唱
+VOCALOID·UTAU
+演奏
+三次元音�?
+OP/ED/OST
+音乐选集
+ 舞蹈 
+舞蹈
+--
+宅舞
+三次元舞�?
+舞蹈教程
+ 游戏 
+游戏
+--
+单机游戏
+电子竞技
+手机游戏
+网络游戏
+桌游棋牌
+GMV
+音游
+Mugen
+ 科技 
+科技
+--
+纪录�?
+趣味科普人文
+野生�?术协�?
+演讲·公开�?
+星海
+数码
+机械
+ 生活 
+生活
+--
+搞笑
+日常
+美食�?
+动物�?
+手工
+绘画
+运动
+其他
+ 鬼畜 
+鬼畜
+--
+鬼畜调教
+音MAD
+人力VOCALOID
+教程演示
+ 时尚 
+时尚
+--
+美妆
+服饰
+健身
+资讯
+ 广告 
+广告
+--
+ 娱乐 
+娱乐
+--
+综艺
+明星
+Korea相关
+ 影视 
+影视
+--
+电影
+电视�?
+广场
+活动中心
+游戏中心
+新闻中心
+画友
+芒果TV
+直播
+推荐主播
+生活娱乐
+绘画专区
+唱见舞见
+御宅文化
+单机联机
+网络游戏
+电子竞技
+手游直播
+放映�?
+小黑�?
+排行�?
+[if lt IE 7]>
+<script type="text/javascript" language="JavaScript">
+window.location="/newlist.html";
+</script>
+<![endif]
+var pageLoadStart = (new Date()).getTime();
+顶部
+新作推广
+在线人数�?
+979747
+�?新投稿：
+--
+window.indexNav = new IndexNavigator({
+                sortable: true,
+                nav: {
+                    douga: {
+                        name: "动画",
+                        target: "#b_douga"
+                    },
+                    bangumi: {
+                        name: "番剧",
+                        target: "#b_bangumi"
+                    },
+                    guochuang: {
+                        name: "国创",
+                        target: "#b_guochuang"
+                    },
+                    music: {
+                        name: "音乐",
+                        target: "#b_music"
+                    },
+                    dance: {
+                        name: "舞蹈",
+                        target: "#b_dance"
+                    },
+                    game: {
+                        name: "游戏",
+                        target: "#b_game"
+                    },
+                    technology: {
+                        name: "科技",
+                        target: "#b_technology"
+                    },
+                    life: {
+                        name: "生活",
+                        target: "#b_life"
+                    },
+                    kichiku: {
+                        name: "鬼畜",
+                        target: "#b_kichiku"
+                    },
+                    fashion: {
+                        name: "时尚",
+                        target: "#b_fashion"
+                    },
+                    "ad-ad-1": {
+                        name: "广告",
+                        target: "#b_ad"
+                    },
+                    ent: {
+                        name: "娱乐",
+                        target: "#b_ent"
+                    },
+                    movie: {
+                        name: "电影",
+                        target: "#b_movie"
+                    },
+                    teleplay: {
+                        name: "TV�?",
+                        target: "#b_teleplay"
+                    }
+                }
+            });
+
+            ModuleManage.load(indexBlock, {container: "#index_container", nav: indexNav});
+            indexNav.loadSetting();
+bilibili
+关于我们
+友情链接
+哔哩哔哩周边
+联系我们
+加入我们
+官方认证
+传�?�门
+帮助中心
+高级弹幕
+活动专题�?
+侵权申诉
+分院帽计�?
+活动中心
+用户反馈论坛
+壁纸�?
+名人�?
+手机端下�?
+新浪微博
+官方微信
+广播电视节目制作经营许可证：
+（沪）字�?1248�? 
+| 网络文化经营许可证：
+沪网文[2013]0480-056�?
+ | 信息网络传播视听节目许可证：
+0910417
+ | 互联网ICP备案�?
+沪ICP�?13002172�?-3
+ 沪ICP证：
+沪B2-20100043
+ | 违法不良信息举报邮箱：help@bilibili.com | 违法不良信息举报电话�?4000233233�?3
+网上有害信息举报专区�?
+ 中国互联网违法和不良信息举报中心
+ | 
+上海互联网举报中�?
+ | 
+12318 全国文化市场举报网站
+沪公网安�? 31011502001911�?
+loadLoginStatus();
+
+$(function () {
+        $.ajax({url: '//data.bilibili.com/rec.js', cache: true, dataType: 'script'});
+        $('<scr' + 'ipt type="text/javascript" src="//static.hdslb.com/js/bfd.js" charset="UTF-8"></scri' + 'pt>').appendTo('body');
+//        $('<scr' + 'ipt type="text/javascript" src="//s11.cnzz.com/stat.php?id=2724999&web_id=2724999" charset="UTF-8"></scri' + 'pt>').appendTo('body');
+        $('<scr' + 'ipt type="text/javascript" src="//tajs.qq.com/stats?sId=9156259" charset="UTF-8"></scri' + 'pt>').appendTo('body');
+    });
+var myUrl = window.location.host + window.location.pathname ;
+        if( myUrl === 'www.bilibili.com/' || myUrl === 'www.bilibili.com/index.html' ){
+            
+            var config = {
+                sample : 1,
+                errorTracker : true ,
+                resourceTracker: false ,
+                scrollTracker: true,
+                msgObjects : ''
+
+            };
+            var jq = document.createElement('script');
+            jq.src = "//s1.hdslb.com/bfs/static/log/report/output.6753d.js";
+            document.getElementsByTagName('body')[0].appendChild(jq);
+        }
+var cnzz_s_tag = document.createElement('script');
+        cnzz_s_tag.type = 'text/javascript';
+        cnzz_s_tag.async = true;
+        cnzz_s_tag.charset = "utf-8";
+        cnzz_s_tag.src = "https://s11.cnzz.com/stat.php?id=2724999&web_id=2724999&async=1";
+        var root_s = document.getElementsByTagName('script')[0];
+        root_s.parentNode.insertBefore(cnzz_s_tag, root_s);

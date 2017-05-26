@@ -1,15 +1,16 @@
 import java.awt.BorderLayout;
 import java.awt.Font;
-import java.util.concurrent.locks.ReentrantLock;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public abstract class SynchronizedPanel extends JPanel{
 	public abstract void buttonLock();
 	public abstract void buttonUnlock();
 }
 
+@SuppressWarnings("serial")
 class DefaultSynchronizedPanel extends SynchronizedPanel {
 
 	@Override

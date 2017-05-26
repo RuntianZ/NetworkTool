@@ -1,10 +1,6 @@
 import java.awt.Color;
 import java.io.Serializable;
 
-import org.mozilla.javascript.Context;
-import org.mozilla.javascript.NativeJSON;
-import org.mozilla.javascript.Scriptable;
-
 /** Color Library.
  *  The colors used in the code.
  */
