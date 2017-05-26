@@ -8,12 +8,13 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.security.KeyStore;
 
+import javax.swing.JEditorPane;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import javax.swing.JTextPane;
 import javax.swing.KeyStroke;
 
-public class TextPaneMenu extends JTextPane implements MouseListener {
+class TextPaneMenu extends JTextPane implements MouseListener {
 
 
 	private JPopupMenu pop = null; // µ¯³ö²Ëµ¥
@@ -131,4 +132,11 @@ public class TextPaneMenu extends JTextPane implements MouseListener {
 		
 	}
 
+}
+
+class UneditableEditorPane extends JEditorPane {
+	public UneditableEditorPane() {
+		super();
+		setEditable(false);
+	}
 }
