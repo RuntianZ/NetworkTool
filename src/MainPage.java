@@ -159,7 +159,7 @@ class MainPage extends JFrame {
 				contentPane.add(panel, BorderLayout.EAST);
 				if (btnWebsite.getText().equals(SHOW_WEBSITE)) {
 					if (defaultBrowser == 0) {
-						textPane = new JEditorPane();
+						textPane = new UneditableEditorPane();
 						btnWebsite.setText(SHOW_WEBSITE_SOURCE);
 						textPane.addHyperlinkListener(new HyperlinkListener() {
 							@Override
