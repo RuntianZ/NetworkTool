@@ -3,14 +3,9 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -21,9 +16,10 @@ import java.util.Vector;
 import javax.swing.JList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Toolkit;
 
-class SettingDialog extends JDialog {
+
+@SuppressWarnings("serial")
+class SettingDialog extends PoppedDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private SynchronizedPanel panel;
@@ -39,20 +35,7 @@ class SettingDialog extends JDialog {
 		setTitle("\u7F16\u8F91\u5668\u8BBE\u7F6E");
 		setResizable(false);
 		setSize(600, 447);
-		Toolkit toolkit = Toolkit.getDefaultToolkit();
-		{
-			int x = Main.mainPage.getX() + Main.mainPage.getWidth() / 2 - 300;
-			if (x < 50)
-				x = 50;
-			if (x > toolkit.getScreenSize().getWidth() - 650)
-				x = (int) (toolkit.getScreenSize().getWidth() - 650);
-			int y = Main.mainPage.getY() + Main.mainPage.getHeight() / 2 - 225;
-			if (y < 50)
-				y = 50;
-			if (y > toolkit.getScreenSize().getHeight() - 497)
-				y = (int) (toolkit.getScreenSize().getHeight() - 497);
-			setLocation(x, y);
-		}
+
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -88,6 +71,7 @@ class SettingDialog extends JDialog {
 				listSelected();
 			}, panelCCC);
 			vec.add(new SettingPackage("配色方案", panelIE));
+			vec.add(new SettingPackage("工具选项", new DefaultOperationPanel()));
 			list = new JList<>(vec);
 			list.setFont(new Font("微软雅黑", Font.PLAIN, 18));
 			list.setPreferredSize(new Dimension(125, 425));

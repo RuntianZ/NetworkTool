@@ -1,6 +1,5 @@
-http://www.126.com
+http://www.bilibili.com
 http://www.pku.edu.cn
-file:///D:/test.html
 http://www.baidu.com
 http://www.sina.com.cn
-http://www.hotmail.com
+http://www.126.com

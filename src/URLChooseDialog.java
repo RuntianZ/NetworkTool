@@ -3,16 +3,12 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Font;
-import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
@@ -26,12 +22,12 @@ import java.util.function.Predicate;
 
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.SwingUtilities;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-class URLChooseDialog extends JDialog {
+@SuppressWarnings("serial")
+class URLChooseDialog extends PoppedDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;
@@ -51,20 +47,7 @@ class URLChooseDialog extends JDialog {
 		setResizable(false);
 		setTitle("\u9009\u62E9\u7F51\u5740");
 		setSize(536, 433);
-		Toolkit toolkit = Toolkit.getDefaultToolkit();
-		{
-			int x = Main.mainPage.getX() + Main.mainPage.getWidth() / 2 - 268;
-			if (x < 50)
-				x = 50;
-			if (x > toolkit.getScreenSize().getWidth() - 586)
-				x = (int) (toolkit.getScreenSize().getWidth() - 586);
-			int y = Main.mainPage.getY() + Main.mainPage.getHeight() / 2 - 216;
-			if (y < 50)
-				y = 50;
-			if (y > toolkit.getScreenSize().getHeight() - 483)
-				y = (int) (toolkit.getScreenSize().getHeight() - 483);
-			setLocation(x, y);
-		}
+	
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -140,12 +123,11 @@ class URLChooseDialog extends JDialog {
 				list = new JList<>(vec);
 				list.addMouseListener(new MouseAdapter() {
 					@Override
-					public void mouseClicked(MouseEvent e) {
+					public void mouseReleased(MouseEvent e) {
 						new Thread( () -> {
 							if (e.getClickCount() >= 1) {
 								String st = list.getSelectedValue();
 								if (st != null) {
-									String sst = textField.getText();
 									textField.setText(st);
 								}
 								if(e.getClickCount() >= 2) {
@@ -173,6 +155,8 @@ class URLChooseDialog extends JDialog {
 						String ss = textField.getText();
 						if (ss == null || ss.equals(""))
 							return;
+						if (ss.startsWith("www."))
+							ss = "http://" + ss;
 						dispose();
 						updateVec(vec, ss, true);
 						Main.mainPage.start(ss);
