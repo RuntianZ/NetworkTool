@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.Vector;
 
-import javax.swing.JList;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -23,7 +22,7 @@ class SettingDialog extends PoppedDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private SynchronizedPanel panel;
-	private JList<SettingPackage> list;
+	private SingleSelectionList<SettingPackage> list;
 	private CodeColorChooser panelCCC;
 	private SettingPackage savedPackage;
 	private ImportEditorPanel panelIE;
@@ -72,7 +71,7 @@ class SettingDialog extends PoppedDialog {
 			}, panelCCC);
 			vec.add(new SettingPackage("配色方案", panelIE));
 			vec.add(new SettingPackage("工具选项", new DefaultOperationPanel()));
-			list = new JList<>(vec);
+			list = new SingleSelectionList<>(vec);
 			list.setFont(new Font("微软雅黑", Font.PLAIN, 18));
 			list.setPreferredSize(new Dimension(125, 425));
 			list.addListSelectionListener(e -> {

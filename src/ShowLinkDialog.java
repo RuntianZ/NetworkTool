@@ -25,7 +25,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
@@ -51,7 +50,7 @@ public class ShowLinkDialog extends PoppedDialog {
 
 	private final JDialog thisDialog = this;
 	private final JPanel contentPanel = new JPanel();
-	private JList<String> list;
+	private SingleSelectionList<String> list;
 	private JButton btnOpen;
 	private JPanel panelFilter, panelRight;
 	private JButton btnFilter, btnAbsolutePath;
@@ -234,7 +233,7 @@ public class ShowLinkDialog extends PoppedDialog {
 				panel.add(panelFilter, BorderLayout.CENTER);
 			}
 			panelCenter.add(panel, BorderLayout.NORTH);
-			list = new JList<>();
+			list = new SingleSelectionList<>();
 
 			list.addListSelectionListener(e -> {
 				String s = absolutePath(list.getSelectedValue());
