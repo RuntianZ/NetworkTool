@@ -11,7 +11,6 @@ import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -25,9 +24,9 @@ class JFontChooser extends SynchronizedPanel {
 	private String showStr = "北大 PKU 1898";
 	private JScrollPane spFont;
 	private JScrollPane spSize;
-	private JList<String> lstFont;
-	private JList<String> lstStyle;
-	private JList<String> lstSize;
+	private SingleSelectionList<String> lstFont;
+	private SingleSelectionList<String> lstStyle;
+	private SingleSelectionList<String> lstSize;
 	private Font selectedfont;
 	private JPanel panel;
 	private JPanel panel_1;
@@ -78,15 +77,15 @@ class JFontChooser extends SynchronizedPanel {
 		for (int i = 0; i < sizeStr.length; ++i) {
 			sizeMap.put(sizeStr[i], sizeVal[i]);
 		}
-		lstSize = new JList<>(sizeStr);
+		lstSize = new SingleSelectionList<>(sizeStr);
 		spSize = new JScrollPane(lstSize);
-		lstStyle = new JList<>(new String[] { "常规", "粗体", "斜体", "粗斜体" });
+		lstStyle = new SingleSelectionList<>(new String[] { "常规", "粗体", "斜体", "粗斜体" });
 		txtFont = new JTextField();
 		txtSize = new JTextField();
 		txtStyle = new JTextField();
 
 		setLayout(new BorderLayout(0, 0));
-		lstFont = new JList<>(fontNames);
+		lstFont = new SingleSelectionList<>(fontNames);
 		spFont = new JScrollPane(lstFont);
 		if (font == null)
 			font = new Font("宋体", Font.PLAIN, 9);
@@ -137,7 +136,7 @@ class JFontChooser extends SynchronizedPanel {
 		lstStyle.addListSelectionListener(new ListSelectionListener() {
 			@SuppressWarnings("unchecked")
 			public void valueChanged(ListSelectionEvent e) {
-				String value = (String) ((JList<String>) e.getSource()).getSelectedValue();
+				String value = (String) ((SingleSelectionList<String>) e.getSource()).getSelectedValue();
 				if (value.equals("常规")) {
 					current_fontStyle = Font.PLAIN;
 				}

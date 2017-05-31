@@ -12,7 +12,6 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JComponent;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
@@ -30,7 +29,7 @@ import javax.swing.ScrollPaneConstants;
 class CodeColorChooser extends SynchronizedPanel {
 	private JButton btnApply;
 	private JPanel valuePanel;
-	private JList<ColorPackage> list;
+	private SingleSelectionList<ColorPackage> list;
 	private boolean isEdited;
 	private JLabel lblSave;
 	private Vector<ColorPackage> vec;
@@ -137,7 +136,7 @@ class CodeColorChooser extends SynchronizedPanel {
 		addColorPackage("代码字符串", 16);
 		addColorPackage("代码标点", 17);
 		addColorPackage("代码内注释", 18);
-		list = new JList<>(vec);
+		list = new SingleSelectionList<>(vec);
 		list.addListSelectionListener(e -> {
 			updateValuePanel();
 		});

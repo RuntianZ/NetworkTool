@@ -120,7 +120,7 @@ class URLChooseDialog extends PoppedDialog {
 					}
 					reader.close();
 				} catch (IOException e) {}
-				list = new JList<>(vec);
+				list = new SingleSelectionList<>(vec);
 				list.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseReleased(MouseEvent e) {
