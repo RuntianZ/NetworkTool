@@ -261,10 +261,29 @@ class MainPage extends JFrame {
 		btnAbout = new JButton("\u5173\u4E8E");
 		btnAbout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(
-						null, "作者:S68-翟润天(1600012737)\nS67-徐可涵(1600012731)\n"
+				Object ob[] = {"确认", "访问官网"};
+				JOptionPane pane = new JOptionPane(
+						 "作者:S68-翟润天(1600012737)\nS67-徐可涵(1600012731)\n"
 								+ "S69-陶铭绪(1600012899)\nS70-金奕成(1600017746)\n" + "本开源软件适用MIT X11许可证",
-						"关于", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.INFORMATION_MESSAGE, JOptionPane.YES_NO_OPTION, null, ob);
+				pane.createDialog("关于").setVisible(true);
+				Object value = pane.getValue();
+				if (value != null) {
+					String st = (String)value;
+					if (st.equals("访问官网")) {
+						if (java.awt.Desktop.isDesktopSupported()) {
+							try {
+								java.net.URI uri = java.net.URI.create("http://www.github.com/RuntianZ/NetworkTool");
+								java.awt.Desktop dp = java.awt.Desktop.getDesktop();
+								if (dp.isSupported(java.awt.Desktop.Action.BROWSE)) {
+									dp.browse(uri);
+								}
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
+					}
+				}
 			}
 		});
 		panel.add(btnAbout);
