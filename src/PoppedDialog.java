@@ -1,3 +1,9 @@
+/**
+ * @author Runtian Zhai
+ * @license MIT
+ * 
+ */
+
 import java.awt.Toolkit;
 
 import javax.swing.JDialog;
