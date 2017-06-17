@@ -1,4 +1,8 @@
-
+/**
+ * @author Runtian Zhai
+ * @license MIT
+ * 
+ */
 
 import java.io.File;
 import java.io.FileInputStream;

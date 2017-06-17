@@ -1,3 +1,9 @@
+/**
+ * @author Runtian Zhai
+ * @license MIT
+ * 
+ */
+
 import java.util.Vector;
 
 import javax.swing.JList;

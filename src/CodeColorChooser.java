@@ -1,3 +1,9 @@
+/**
+ * @author Runtian Zhai
+ * @license MIT
+ * 
+ */
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -289,7 +295,7 @@ class CodeColorChooser extends SynchronizedPanel {
 		insertWithColor("\n");
 		insertIndents();
 		insertWithColor("<", colors.colorTagLabel);
-		insertWithColor("style", colors.colorTag);
+		insertWithColor("/style", colors.colorTag);
 		insertWithColor(">", colors.colorTagLabel);
 		insertWithColor("\n");
 		insertWithColor("</", colors.colorTagLabel);

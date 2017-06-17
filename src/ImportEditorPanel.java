@@ -1,3 +1,9 @@
+/**
+ * @author Runtian Zhai
+ * @license MIT
+ * 
+ */
+
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileFilter;
 

@@ -1,3 +1,9 @@
+/**
+ * @author Runtian Zhai
+ * @license MIT
+ * 
+ */
+
 import java.awt.Color;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -313,6 +319,27 @@ public class HTMLHandler extends HTMLEditorKit.ParserCallback {
 				
 		}
 
+		private void handleInlineCSS(String s) {
+			boolean onValue = false;
+			for (int i = 0; i < s.length(); ++i) {
+				switch (s.charAt(i)) {
+				case ':':
+					onValue = true;
+					insertWithColor(':');
+					break;
+				case ';':
+					onValue = false;
+					insertWithColor(';');
+					break;
+				default:
+					if (onValue)
+						insertWithColor(s.charAt(i), colors.colorCSSAttributeValue);
+					else
+						insertWithColor(s.charAt(i), colors.colorCSSAttributeName);
+				}
+			}
+		}
+		
 		private void handleCSS(String s) {
 			boolean inComment = false;
 			boolean needIndent = false;
@@ -340,8 +367,8 @@ public class HTMLHandler extends HTMLEditorKit.ParserCallback {
 						boolean inString = false;
 						while (++i < s.length() && s.charAt(i) != '}') {
 							if (!inString &&
-								(s.charAt(i) == ' ' || s.charAt(i) == '\n' ||
-								 s.charAt(i) == '\r' || s.charAt(i) == 't'))
+								(s.charAt(i) == '\n' ||
+								 s.charAt(i) == '\r' || s.charAt(i) == '\t'))
 								continue;
 							if (s.charAt(i) == '\'' || s.charAt(i) == '\"')
 								inString = !inString;
@@ -404,7 +431,7 @@ public class HTMLHandler extends HTMLEditorKit.ParserCallback {
 						insertWithColor('\"', colors.colorAttributeValue);
 					} else if ("style".equals(ob.toString())) {
 						insertWithColor('\"', colors.colorAttributeValue);
-						handleCSS(a.getAttribute(ob).toString());
+						handleInlineCSS(a.getAttribute(ob).toString());
 						insertWithColor('\"', colors.colorAttributeValue);
 					} else
 						insertWithColor("\"" + a.getAttribute(ob).toString() + "\"", colors.colorAttributeValue);
@@ -452,10 +479,12 @@ public class HTMLHandler extends HTMLEditorKit.ParserCallback {
 						insertWithColor('\"', colors.colorAttributeValue);
 					} else if ("style".equals(ob.toString())) {
 						insertWithColor('\"', colors.colorAttributeValue);
-						handleCSS(a.getAttribute(ob).toString());
+						handleInlineCSS(a.getAttribute(ob).toString());
 						insertWithColor('\"', colors.colorAttributeValue);
-					} else
+					} else {
 						insertWithColor("\"" + a.getAttribute(ob).toString() + "\"", colors.colorAttributeValue);
+						
+					}
 				}
 
 			}

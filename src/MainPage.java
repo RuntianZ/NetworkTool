@@ -1,3 +1,9 @@
+/**
+ * @author Runtian Zhai
+ * @license MIT
+ * 
+ */
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -190,13 +196,9 @@ class MainPage extends JFrame {
 										}).start();
 									} else {
 										SwingUtilities.invokeLater(() -> {
-											contentPane.removeAll();
-											contentPane.add(panel, BorderLayout.EAST);
-											textPane = new TextPaneMenu();
-											btnWebsite.setText(SHOW_WEBSITE);
+											setTextPane();
 											reDownload(e.getURL().toString(), true);
-											JScrollPane jsp = new JScrollPane(textPane);
-											contentPane.add(jsp, BorderLayout.CENTER);
+											
 											contentPane.updateUI();
 										});
 										
@@ -204,6 +206,7 @@ class MainPage extends JFrame {
 								}
 							}
 						});
+						
 						
 					} else {
 						// From <link>http://blog.csdn.net/hfmbook/article/details/16882807</link>
@@ -220,9 +223,9 @@ class MainPage extends JFrame {
 						}
 					}
 				} else {
-					textPane = new TextPaneMenu();
+					setTextPane();
 					reParse(true);
-					btnWebsite.setText(SHOW_WEBSITE);
+					
 				}
 				JScrollPane jsp = new JScrollPane(textPane);
 				contentPane.add(jsp, BorderLayout.CENTER);
@@ -261,7 +264,7 @@ class MainPage extends JFrame {
 		btnAbout = new JButton("\u5173\u4E8E");
 		btnAbout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Object ob[] = {"确认", "访问官网"};
+				Object ob[] = {"确认", "访问官网", "查看条款"};
 				JOptionPane pane = new JOptionPane(
 						 "作者:S68-翟润天(1600012737)\nS67-徐可涵(1600012731)\n"
 								+ "S69-陶铭绪(1600012899)\nS70-金奕成(1600017746)\n" + "本开源软件适用MIT X11许可证",
@@ -282,6 +285,21 @@ class MainPage extends JFrame {
 								e.printStackTrace();
 							}
 						}
+					} else if (st.equals("查看条款")) {
+						try {
+							BufferedReader reader = new BufferedReader(new FileReader(new File("license.txt")));
+							StringBuilder sb = new StringBuilder();
+							while(true) {
+								String s = reader.readLine();
+								if (s == null)
+									break;
+								sb.append(s + "\n");
+							}
+							JOptionPane.showMessageDialog(null, sb.toString(), "条款", JOptionPane.INFORMATION_MESSAGE);
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
 					}
 				}
 			}
@@ -591,6 +609,15 @@ class MainPage extends JFrame {
 		SwingUtilities.invokeLater(() -> {
 			JOptionPane.showMessageDialog(null, "下载失败", "错误", JOptionPane.ERROR_MESSAGE);
 		});
+	}
+	
+	public void setTextPane() {
+		contentPane.removeAll();
+		contentPane.add(panel, BorderLayout.EAST);
+		textPane = new TextPaneMenu();
+		btnWebsite.setText(SHOW_WEBSITE);
+		JScrollPane jsp = new JScrollPane(textPane);
+		contentPane.add(jsp, BorderLayout.CENTER);
 	}
 
 	public void updateOptions() {

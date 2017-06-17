@@ -1,3 +1,9 @@
+/**
+ * @author Runtian Zhai
+ * @license MIT
+ * 
+ */
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Desktop;
@@ -383,6 +389,7 @@ public class ShowLinkDialog extends PoppedDialog {
 							}
 						} else {
 							dispose();
+							Main.mainPage.setTextPane();
 							Main.mainPage.start(s);
 						}
 					}
